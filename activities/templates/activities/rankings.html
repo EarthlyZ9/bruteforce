@@ -1,0 +1,76 @@
+{% extends 'main/base.html' %}
+<head>
+  {% load static %}
+  {% block extrahead %}
+  <link href={% static 'activities/css/rankings.css' %} rel="stylesheet" />
+  {% endblock extrahead %}
+</head>
+
+<body>
+  {% block container %}
+  <div class="py-4 d-flex align-items-center" style='height:calc(100% - 60px);'>
+    <div class='container-fluid mx-5' style="padding: 0;" id="gradient_background">
+      <div class='header d-flex align-items-center justify-content-center'>
+        <img class='header_img my-3' src="{% static 'activities/images/ranking_title.png' %}">
+      </div>
+      <div class='courses d-flex align-items-center justify-content-center'>
+    
+        <!--파이썬-->
+        <div class='container course' id='python'>
+          <div class='title_container'><h1>프로그래밍 기초 in Python</h1></div>
+          {% for user in python_top_ten %}
+            <div class='single_row' style='display:inline-block;'>
+              <div class='rank' style='display:inline-block;'>
+                {% if forloop.counter == 1 %}<img src="{% static 'activities/images/ranking_gold.png' %}">{% elif forloop.counter == 2%}<img src="{% static 'activities/images/ranking_silver.png' %}">{% elif forloop.counter == 3 %}<img src="{% static 'activities/images/ranking_bronze.png' %}">{% else %}<p>{{forloop.counter}}</p>{% endif %}
+              </div>
+              <img src="{% static 'activities/images/ranking_profile.png' %}" style='display:inline-block;'>
+              <div class='ranking_info py-1 px-1' style='display:inline-block; margin-right: 8px;'>
+                <p style="width:30%;">{{user.user}}</p>
+                <img src="{% static 'activities/images/ranking_stars.png' %}" style='display:inline-block; ' class='mx-2'>
+                <p style="width: 12%;">{{user.total_points}}</p>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+
+        <!--데이터 사이언스-->
+        <div class='container course' id='datascience'>
+          <div class='title_container'><h1>데이터 사이언스 입문</h1></div>
+          {% for user in ds_top_ten %}
+            <div class='single_row' style='display:inline-block;'>
+              <div class='rank' style='display:inline-block;'>
+                {% if forloop.counter == 1 %}<img src="{% static 'activities/images/ranking_gold.png' %}">{% elif forloop.counter == 2%}<img src="{% static 'activities/images/ranking_silver.png' %}">{% elif forloop.counter == 3 %}<img src="{% static 'activities/images/ranking_bronze.png' %}">{% else %}<p>{{forloop.counter}}</p>{% endif %}
+              </div>
+              <img src="{% static 'activities/images/ranking_profile.png' %}" style='display:inline-block;'>
+              <div class='ranking_info py-1 px-1' style='display:inline-block; margin-right: 8px;'>
+                <p style="width:30%;">{{user.user}}</p>
+                <img src="{% static 'activities/images/ranking_stars.png' %}" style='display:inline-block; ' class='mx-2'>
+                <p style="width: 12%;">{{user.total_points}}</p>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+          
+
+        <!--웹 퍼블리싱-->
+        <div class='container course' id='htmlcss'>
+          <div class='title_container'><h1>웹 퍼블리싱</h1></div>
+          {% for user in htmlcss_top_ten %}
+            <div class='single_row' style='display:inline-block;'>
+              <div class='rank' style='display:inline-block;'>
+                {% if forloop.counter == 1 %}<img src="{% static 'activities/images/ranking_gold.png' %}">{% elif forloop.counter == 2%}<img src="{% static 'activities/images/ranking_silver.png' %}">{% elif forloop.counter == 3 %}<img src="{% static 'activities/images/ranking_bronze.png' %}">{% else %}<p>{{forloop.counter}}</p>{% endif %}
+              </div>
+              <img src="{% static 'activities/images/ranking_profile.png' %}" style='display:inline-block;'>
+              <div class='ranking_info py-1 px-1' style='display:inline-block; margin-right: 8px;'>
+                <p style="width:30%;">{{user.user}}</p>
+                <img src="{% static 'activities/images/ranking_stars.png' %}" style='display:inline-block; ' class='mx-2'>
+                <p style="width: 12%;">{{user.total_points}}</p>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endblock container %}
+</body>

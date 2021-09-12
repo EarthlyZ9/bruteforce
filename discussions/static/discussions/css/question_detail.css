@@ -1,0 +1,159 @@
+html {
+  height: 100%;
+
+}
+.source-code {
+  line-height: 14px;
+  font-size: 14px;
+}
+
+.back {
+  height: fit-content !important; 
+  width: fit-content !important;
+  background-color: rgb(35,35,35) !important;
+  color: white !important;
+}
+
+.back:hover {
+  color: black;
+  background-color: #feb900;
+}
+
+.category {
+  background-color: rgba(254, 185, 0, 0.2);
+  padding: 5px;
+  border-radius: 15px;
+  width:fit-content;
+  display: table-cell;
+  vertical-align: middle;
+  font-size: 17px;
+  line-height: 17px;
+}
+
+.header {
+  display: inline-block;
+}
+
+.header h2 {
+  display: inline-block;
+}
+
+.btn-primary {
+  color: black;
+  display: inline-block;
+  border-radius: 10px;
+  border: 0;
+  background-color: #FEB900;
+  padding: 3px;
+  height: 103px;
+  width: 8%;
+}
+
+.btn-primary:focus {
+  background-color: rgb(35,35,35);
+  border-color: rgb(35,35,35);
+  color: white;
+  box-shadow: 0 0 0 0.25rem rgb(35 35 35 / 50%);
+}
+.btn-primary:active:focus {
+  box-shadow: 0 0 0 0.25rem rgb(35 35 35 / 50%);
+}
+.btn-primary:active {
+  background-color: rgb(35,35,35);
+  border-color: rgb(35,35,35);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: rgb(35,35,35);
+  color: white;
+}
+
+#author-badge {
+  text-align: right;
+  float: right;
+  padding: 5px;
+}
+#author-badge p {
+  margin: 0;
+}
+
+.badge {
+  text-align: right;
+}
+
+.card-body {
+  padding: 10px;
+}
+
+.form-group {
+  width: 90%;
+}
+
+#question_content {
+  margin-top: 10px;
+  margin-bottom: 2px;
+}
+.modify_date {
+  float: left;
+  font-size: 12px;
+  margin: 0;
+}
+
+.modify-delete {
+  text-align: right;
+  margin-top: 5px;
+}
+
+.right-column {
+  display: inline-block;
+}
+
+.vote-count {
+  display: inline-block;
+  width: 100%;
+}
+
+.recommend {
+  width: 100%;
+  display: inline-block;
+}
+
+.modify-delete-answer {
+  float: right;
+  text-align: right;
+}
+
+.comment-div {
+  margin-left: 10px;
+}
+
+.comment-info {
+  float: right;
+  margin-right: 10px;
+  font-size: 12px;
+}
+
+.comment-info a {
+  font-size: 12px;
+}
+
+.comment {
+  background-color: rgba(254,185,0,0.2);
+  border-radius: 8px;
+  margin-right: 10px;
+}
+
+form {
+  display: inline-block;
+}
+
+.answer-author {
+  margin-left: 10px;
+}
+
+@media (max-width: 767px) {
+  .recommend {
+    width: auto;
+  }
+}

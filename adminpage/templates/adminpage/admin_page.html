@@ -1,0 +1,17 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block container %}
+
+<h1>어드민 페이지</h1>
+<ul>
+  <li><a href={% url 'admin-page:user-info' %}>수강생 정보</a></li>
+  <li><a href={% url 'admin-page:weekly-studies' %}>주차별 학습활동 제출 현황</a></li>
+</ul>
+
+<a type='button' class='btn btn-primary' href="{% url 'admin-page:python-points' %}">파이썬 수강생 학습포인트 확인 [집계하기]</a>
+<a type='button' class='btn btn-primary' href="{% url 'admin-page:ds-points' %}">데이터 사이언스 수강생 학습포인트 확인 [집계하기]</a>
+<a type='button' class='btn btn-primary' href="{% url 'admin-page:htmlcss-points' %}">웹 퍼블리싱 수강생 학습포인트 확인 [집계하기]</a>
+
+
+{% endblock container %}

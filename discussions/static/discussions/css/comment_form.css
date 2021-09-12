@@ -1,0 +1,49 @@
+@font-face {
+  font-family: 'GongGothicLight';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10@1.0/GongGothicLight.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  align-items: center;
+  font-family: 'GongGothicLight', sans-serif;
+}
+
+.post-form {
+  margin-top: 20px;
+}
+
+.btn-primary:hover {
+  background-color: #FEB900;
+  color: black;
+}
+
+.btn-primary {
+  background-color: rgb(35,35,35);
+  color: white;
+  border: 0;
+  float: right;
+  margin-top: 10px;
+}
+
+.label {
+  text-align: left;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.btn-primary:focus {
+  background-color: rgb(35,35,35);
+  border-color: rgb(35,35,35);
+  color: white;
+  box-shadow: 0 0 0 0.25rem rgb(35 35 35 / 50%);
+}
+.btn-primary:active:focus {
+  box-shadow: 0 0 0 0.25rem rgb(35 35 35 / 50%);
+}
+.btn-primary:active {
+  background-color: rgb(35,35,35);
+  border-color: rgb(35,35,35);
+  color: white;
+}

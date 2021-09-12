@@ -1,0 +1,147 @@
+{% extends 'main/base.html' %}
+<head>
+  {% load static %}
+  {% load adminpage_filter %}
+  {% block extrahead %}
+  <link href={% static 'adminpage/css/ds_points.css' %} rel="stylesheet" />
+  {% endblock extrahead %}
+</head>
+
+<body>
+  {% block container %}
+    <div class="container" style="margin-top:15px;">
+      <div class='backhome'><a href="{% url 'admin-page:admin-page' %}"><i class="fas fa-home" style="font-size:30px;"></i></a></div>
+      <h1>수강생 학습 포인트 조회_데이터 사이언스</h1>
+
+        <div class="d-flex" id="search">
+          <input class="form-control me-2 kw" type="search" placeholder="검색어를 입력하세요." aria-label="Search" id="search-input">
+          <button class="btn btn-outline-success" type="submit" id="btn_search">찾기</button>
+        </div>
+      </div>
+      
+        <table class="table table-condensed table-stripped table-hover">
+          <thead class="table-dark">
+            <tr>
+              <th scope="col" style="width: 5%;">#</th>
+              <th scope="col" style="width: 7%;">Name</th>
+              <th scope="col" style="width: 7%;">Username</th>
+              {% for week in week_list%}
+                <th scope="col" style="width: 40px;">{{forloop.counter}}출</th>
+                <th scope="col" style="width: 40px;">{{forloop.counter}}활</th>
+              {% endfor %}
+              <th scope="col" style="width: 40px;">1차</th>
+              <th scope="col" style="width: 40px;">2차</th>
+              <th scope="col" style="width: 40px;">3차</th>
+              <th scope="col" style="width: 40px;">4차</th>
+              <th scope="col" style="width: 40px;">추가</th>
+              <th scope="col" style="width: 40px;">합계(주)</th>
+              <th scope="col" style="width: 40px;">합계(진)</th>
+              <th scope="col" style="width: 40px;">총점</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for ds_user in ds_user_list %}
+            <tr> 
+              <!--파이썬 코스 인적사항-->
+              <td>{{ds_user_list.paginator.count|sub:ds_user_list.start_index|sub:forloop.counter0|add:1 }}</td>
+              <td>{{ds_user.name}}</td>
+              <td>{{ds_user.username}}</td>
+              <!--주차별 출석 및 활동 loop-->
+              {% for record in ds_user.weeklyactivitypoints_set.all %}
+                <td>{{record.attendance}}</td>
+                <td>{{record.weekly_studies}}</td>
+              {% endfor %}
+              <!--진도율 Progress Model-->
+              <td>{{ds_user.progress_set.progress1}}</td>
+              <td>{{ds_user.progress_set.progress2}}</td>
+              <td>{{ds_user.progress_set.progress3}}</td>
+              <td>{{ds_user.progress_set.progress4}}</td>
+              
+              <td>{{additional_ap}}</td><!--추가점수-->
+              <td>{{weekly_ap}}</td> <!--주차별 학습 합계-->
+              <td>{{progress_ap}}</td> <!--진도율 점수 합계-->
+              
+              <td>{{total_ap}}</td> <!--총점-->
+            </tr>
+            {% endfor %}
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 페이징처리 시작 -->
+    <ul class="pagination justify-content-center">
+        <!-- 이전페이지 -->
+        {% if ds_user_list.has_previous %}
+        <li class="page-item">
+            <a class="page-link" data-page="{{ 1 }}" href="#"> << </a>
+        </li>
+        <li class="page-item">
+            <a class="page-link" data-page="{{ ds_user_list.previous_page_number }}" href="#"> < </a>
+        </li>
+        {% else %}
+        <li class="page-item disabled">
+            <a class="page-link"> << </a>
+        </li>
+        <li class="page-item disabled">
+            <a class="page-link" tabindex="-1" aria-disabled="true" href="#"> < </a>
+        </li>
+        {% endif %}
+        <!-- 페이지리스트 -->
+        {% for page_number in ds_user_list.paginator.page_range %}
+            {% if page_number >= ds_user_list.number|add:-5 and page_number <= ds_user_list.number|add:5 %}
+            {% if page_number == ds_user_list.number %}
+            <li class="page-item active" aria-current="page">
+                <a class="page-link" data-page="{{ page_number }}" href="#">{{ page_number }}</a>
+            </li>
+            {% else %}
+            <li class="page-item">
+                <a class="page-link" data-page="{{ page_number }}"href="#" >{{ page_number }}</a>
+            </li>
+            {% endif %}
+            {% endif %}
+        {% endfor %}
+        <!-- 다음페이지 -->
+        {% if ds_user_list.has_next %}
+        <li class="page-item">
+            <a class="page-link" data-page="{{ ds_user_list.next_page_number }}" href="#"> > </a>
+        </li>
+        <li class="page-item">
+            <a class="page-link" data-page="{{ ds_user_list.paginator.count }}" href="#" > >> </a>
+        </li>
+        {% else %}
+        <li class="page-item disabled">
+            <a class="page-link" tabindex="-1" aria-disabled="true" href="#"> > </a>
+        </li>
+        <li class="page-item disabled">
+            <a class="page-link"> >> </a>
+        </li>
+        {% endif %}
+    </ul>
+    <!-- 페이징처리 끝 -->
+
+    <form id="searchForm" method="get" action="{% url 'admin-page:ds-points' %}">
+      <input type="hidden" id="kw" name="kw" value="{{ kw|default_if_none:'' }}">
+      <input type="hidden" id="page" name="page" value="{{ page }}">
+    </form>
+  {% endblock %}
+
+  {% block extrascript %}
+  <script type='text/javascript'>
+  $(document).ready(function(){
+      $(".page-link").on('click', function() {
+      $("#page").val($(this).data("page"));
+      $("#searchForm").submit();
+      });
+      $("#btn_search").on('click', function() {
+          $("#kw").val($(".kw").val());
+          $("#page").val(1);
+          $("#searchForm").submit();
+      });
+    });
+  </script>
+  <script src={% static 'adminpage/js/enterkey.js' %}></script>
+  {% endblock%}
+  
+</body>

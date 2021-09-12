@@ -1,0 +1,69 @@
+{% extends 'main/base.html' %}
+{% load static %}
+<head>
+  {% load static %}
+  {% block extrahead %}
+  <link href={% static 'points/css/points.css' %} rel="stylesheet" />
+  {% endblock extrahead %}
+</head>
+<body>
+  {% block container %}
+    <div class="points_banner">
+      <a href={% url "points:points-info" %} target ="_blank">
+        <img src="{% static 'points/images/points_banner.png'%}" style="width: 100%;">
+      </a>
+    </div>
+
+    <div class="container-fluid" style="height: auto;">
+      <h1>학습 포인트 사용하기</h1>
+      {% for product in products %}
+        <div class="product">
+          <img src={% get_static_prefix %}{{product.img_path}} height="225px" width="225px">
+          <h2>{{product.name}}</h2>
+          <p class='product_description'>{{product.description}}</p>
+          <p class='product_price'>{{product.price}}</p>
+        </div>
+      {% endfor %}
+      <div class="clearfix"></div>
+    </div>
+
+    
+
+    <footer class="footer mt-auto py-1 fixed-bottom">
+      {% if messages %}
+      {% for message in messages %}
+        <div class="alert alert-danger" role="alert">
+          {{message}}
+        </div>
+      {% endfor %}
+      {% endif %} 
+   
+      <div class="container">
+        <div class="mypoints">
+          <p style="display:inline-block; margin-right: 20px;">내 밥풀: </p><p style="display:inline-block;">{{available_points}}</p>
+        </div>
+        <!--<div class="cashout"><p>교환하기</p></div>-->
+          
+          <form method="post" id="purchase-request" class="row align-items-center" onsubmit="return complete()">
+            {% csrf_token %}
+            
+            <div class="input-group">
+
+              <select required class="form-select" name="option_select" id="option_select" aria-label="Example select with button addon">
+                <option value="no_select" disabled selected>옵션을 선택해주세요.</option>
+                {% for product in products %}
+                <option value={{product.num}}>{{product.name}}</option>
+                {% endfor %}
+              </select>
+              <button class="btn btn-outline-secondary" id='request_btn' type="submit">신청하기</button>
+            </div>
+          </form>
+      </div>
+    </footer>
+
+  {% endblock container %}
+
+  {% block extrascript %}
+  <script src="{% static 'points/js/points.js' %}"></script>
+  {% endblock %}
+</body>

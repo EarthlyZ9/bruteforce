@@ -1,0 +1,70 @@
+{% extends 'main/base.html' %}
+<head>
+  {% load static %}
+  {% block extrahead %}
+  <link href={% static 'accounts/css/profile.css' %} rel="stylesheet" />
+  {% endblock extrahead %}
+</head>
+
+<body>
+  {% block container %}
+  <div class="py-4 d-lg-flex align-items-center" id='flex-box'>
+    <div class="container py-1" id="profile-container" style="height: auto;">
+      <div class="info course-ing">
+        <div class='week-indicator'><h1 class='week-text num'>{{week_num}}</h1><h1 class='week-text'>주차</h1></div>
+        <h2>{{user_info.get_course_display}}</h2>
+        <p>~환급 챌린지 진행중~</p>
+      </div>
+      <div class="info points">
+        <h1>{{user_info.name}}님,</h1>
+        <p>누적 포인트: {{user_points_status.total_points}} </p>
+        <p>가용 포인트: {{available_points}} </p>
+        <a type="button" onclick="window.open('purchase_records','purchase-records','width=500, height=400, menubar=no, status=no');" data-bs-toggle="tooltip" data-bs-placement="right" title="포인트 사용 내역을 확인하거나 가용 포인트 현황을 업데이트하려면 여기를 클릭하세요.">학습 포인트 사용 내역 보기</a>
+      </div>
+
+      <fieldset disabled>
+        <div class="info">
+          <label for="disabledUsernameInput" class="form-label">아이디</label>
+          <input type="text" id="disabledUsernameInput" class="form-control" placeholder={{user_info.username}}>
+        </div>
+        <div class="info">
+          <label for="disabledUnivInput" class="form-label">학교</label>
+          <input type="text" id="disabledUnivInput" class="form-control" placeholder={{user_info.univ}}>
+        </div>
+        <div class="info">
+          <label for="disabledMobileNumInput" class="form-label">휴대전화</label>
+          <input type="text" id="disabledUMobileNumInput" class="form-control" placeholder={{user_info.mobile_num}}>
+        </div>
+        <div class="info">
+          <label for="disabledEmailInput" class="form-label">이메일</label>
+          <input type="text" id="disabledEmailInput" class="form-control" placeholder={{user_info.username}}>
+        </div>
+        <div class="info">
+          <label for="disabledDateofBirthInput" class="form-label">생년월일</label>
+          <input type="text" id="disabledDateofBirthInput" class="form-control" placeholder={{user_info.date_of_birth|date:"Y-m-d"}}>
+        </div>
+        <div class="info">
+          <label for="disabledSignupDateInput" class="form-label">가입일</label>
+          <input type="text" id="disabledSignupDateInput" class="form-control" placeholder={{user_info.signup_date|date:"Y-m-d"}}>
+        </div>
+        <hr>
+        <div class="info">
+          <label for="disabledBankAccountInput" class="form-label">환급 계좌</label>
+          <input type="text" id="disabledBankAccountInput" class="form-control" placeholder={{user_info.bank_account.value|default_if_none:"입력전"}}>
+        </div>
+        <div class="info">
+          <label for="disabledBankNameInput" class="form-label">은행명</label>
+          <input type="text" id="disabledBankNameInput" class="form-control" placeholder={{user_info.get_bank_name_display.value|default_if_none:""}}>
+        </div>
+      </fieldset>
+
+      <a type="button" class="btn btn-primary" href="{% url 'accounts:update-user-info' %}">개인정보 수정하기</a>
+      <a type="button" class="btn btn-primary" onclick="window.open('update_password','update-password','width=500, height=500, menubar=no, status=no');">비밀번호 변경하기</a>
+    </div>
+  </div>
+  {% endblock container %}
+  {% block extrascript %}
+  <script src="{% static 'accounts/js/profile.js' %}"></script>
+  {% endblock %}
+</body>
+

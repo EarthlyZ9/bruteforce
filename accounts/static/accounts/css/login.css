@@ -1,0 +1,116 @@
+@font-face {
+  font-family: 'GongGothicMedium';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10@1.0/GongGothicMedium.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'GongGothicLight';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10@1.0/GongGothicLight.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: 'GongGothicLight', sans-serif;
+  background-color: #F7EFDA;
+}
+
+body, html {
+  height: 100%;
+}
+
+
+h2 {
+  text-align: center;
+  margin-bottom: 8px;
+  color: black;
+  font-family: 'GongGothicMedium', sans-serif;
+}
+
+h6 {
+  margin-top: 10px;
+  text-align: left;
+}
+.logo {
+  margin-bottom: 30px;
+}
+#login-btn {
+  width: 150px;
+  border-radius: 20px;
+  background-color: rgb(35,35,35);
+  border: 0;
+  padding: 0;
+  margin-bottom: 2px;
+  height: 40px;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+
+}
+
+.container {
+  text-align: center;
+}
+
+.input-container {
+  text-align: center;
+  width: 400px;
+  margin-right: 0;
+}
+
+.login-container {
+  margin: auto;
+  width: 440px;
+  background-color: #FEB900;
+  text-align: center;
+  border-radius: 15px;
+  height: 310px;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+}
+
+#login-btn:hover {
+  background-color: rgb(30,30,30);
+}
+
+#signup_btn {
+  margin-top: 5px;
+}
+
+#signup_btn a {
+  text-decoration: none;
+  color: rgb(97, 85, 85);
+  
+}
+
+#back-to-main {
+  text-decoration: none;
+  color: rgb(97, 85, 85);
+}
+
+
+.post-form {
+  width: 400px;
+  margin-right: 0;
+}
+
+.form-floating {
+  width: 400px;
+}
+
+#forgot-password {
+  font-size: 15px;
+  color: rgb(35,35,35);
+  text-align: center;
+}
+
+.coding {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  float: right;
+  margin-bottom: 20px;
+}

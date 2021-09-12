@@ -1,0 +1,121 @@
+html {
+  height: 100%;
+}
+
+body {
+  text-align: center;
+  background-color: #FEB900;
+	width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+}
+
+.week-text {
+  display: inline-block;
+}
+
+.num {
+  color: #FF3605;
+  font-size: 50px !important;
+  margin-right: 10px;
+}
+
+.week-indicator {
+  display: inline-block;
+}
+
+.points h1 {
+  text-align: right;
+  font-size: 40px;
+  margin-bottom: 15px;
+}
+
+.points p {
+  margin-bottom: 8px;
+}
+
+.points a {
+  text-decoration: underline !important;
+}
+
+.course-ing {
+  margin-top: 20px;
+}
+
+.course-ing p {
+  margin-bottom: 0;
+}
+
+.course-ing h1 {
+  font-size: 40px;
+  margin-bottom: 0;
+  margin-top: 20px;
+}
+fieldset {
+  margin: 0 auto;
+}
+
+.info {
+  display: inline-block;
+  margin: 8px;
+  text-align: left;
+  width: 300px;
+}
+
+
+.info select, .info input {
+  height: 50px;
+}
+
+hr {
+  width: 90%;
+  margin: 10px auto;
+}
+
+#profile-container {
+  margin: 0 auto;
+  text-align: center;
+  width: 75%;
+  border-radius: 30px;
+  background-color: white;
+  vertical-align: middle;
+}
+
+.btn-primary {
+  margin-top: 8px;
+  margin-bottom:8px;
+  border: 0;
+  background-color: rgb(35,35,35);
+}
+
+.btn-primary:hover {
+  background-color: #FEB900;
+  color: black;
+}
+
+.tooltip {
+  font-family: 'GongGothicLight', sans-serif;
+  font-size: 12px;
+}
+
+/**태블릿 사이즈 조건 **/
+@media (min-width: 767px) {
+  fieldset {
+    width: 400px;
+  }
+  #update-form {
+    width: 400px;
+  }
+}
+
+@media (min-width: 992px) {
+  fieldset {
+    width: 750px;
+  }
+  #update-form {
+    width: 750px;
+  }
+  #flex-box {
+    height:calc(100% - 60px);
+  }
+}

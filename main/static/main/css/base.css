@@ -1,0 +1,147 @@
+@font-face {
+  font-family: 'GongGothicMedium';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10@1.0/GongGothicMedium.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'GongGothicLight';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10@1.0/GongGothicLight.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: 'GongGothicLight', sans-serif;
+}
+.container-fluid {
+  padding:  0;
+  height: 60px;
+  margin-left: 5px;
+  margin-right: 10px;
+  display: inline-block;
+}
+
+.navbar {
+  height: 60px;
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-bottom: 0;
+  font-family: 'GongGothicMedium', sans-serif;
+}
+
+.navbar-brand {
+  vertical-align: middle;
+  margin-left: 15px;
+}
+
+.dropdown-menu-dark {
+  background-color: rgba(35, 35, 35, 0.9);
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: white;
+}
+.nav-item {
+  line-height: 60px;
+  margin-left: 10px;
+  margin-right: 10px;
+  background-color: rgb(35, 35, 35);
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.nav-link {
+  padding-bottom: 0;
+  padding-top: 0;
+  font-size: 14px;
+  font-weight: bold;
+  text-decoration: none;
+  background-color: rgb(35, 35, 35);
+}
+
+.dropdown-menu[data-bs-popper] {
+  margin-top: 0;
+}
+
+.dropdown-menu {
+  border: 0;
+  padding: 0;
+  border-radius: 0;
+  min-width: 98px;
+}
+
+.dropdown-item {
+  padding-top: 0;
+  padding-bottom: 0;
+  height: 40px;
+  vertical-align: middle;
+  line-height: 40px;
+  text-align: left;
+  font-size: 13px;
+  text-decoration: none;
+  color: gray;
+}
+
+.dropdown-menu-dark .dropdown-item.active, .dropdown-menu-dark .dropdown-item:active {
+  background-color: rgba(255,255,255,.15);
+}
+
+.dropdown-item a{
+  color: white;
+}
+
+.dropdown-menu li {
+  vertical-align: middle;
+}
+
+.float-contact {
+  background-color: rgb(35,35,35);
+  border-radius: 15px;
+  float: right;
+  color: white;
+  text-align: center;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  z-index: 2000;
+}
+
+.float-contact p {
+  font-size: 13px;
+  margin-bottom: 0;
+}
+
+.float-contact li {
+  list-style: none;
+  text-align: center;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+
+.float-contact li:hover {
+  background-color: rgba(225,225,225,0.15);
+  cursor: pointer;
+}
+
+.float-contact ul {
+  padding: 10px;
+  margin-bottom: 0;
+}
+
+.float-contact a {
+  text-decoration: none;
+  color: white;
+}
+
+.icon {
+  font-size: 30px;
+}
+
+
+
+

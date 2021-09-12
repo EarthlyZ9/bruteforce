@@ -1,0 +1,76 @@
+@font-face {
+  font-family: 'RixYeoljeongdo_Regular';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2102-01@1.0/RixYeoljeongdo_Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+html {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+}
+.container {
+  text-align: center;
+}
+
+.title_container {
+  display: inline-block;
+  text-align: center;
+  width:70%;
+
+}
+
+h1 {
+  font-family: 'RixYeoljeongdo_Regular', sans-serif;
+  font-size: 25px;
+  background-color: white;
+  border-radius: 20px;
+  line-height: 40px;
+  vertical-align: bottom;
+}
+
+.d-flex {
+  width: 100%;
+}
+
+#gradient_background {
+  background: linear-gradient( to right, #FEB900, rgb(251, 146, 52) );
+  height: 100%;
+  border-radius: 20px;
+  border: 2px solid rgb(217,118,54);
+  text-align: center;
+}
+
+.header_img {
+  height: 90%;
+  display: block;
+}
+
+.course {
+  margin-top: 15px;
+  display: inline-block;
+  width: 30%;
+  text-align: center;
+}
+
+.ranking_info {
+  display: inline-block;
+  background-color: white;
+  border-radius: 5px;
+  width: 60%;
+}
+
+
+.ranking_info p {
+  display: inline-block;
+  margin-bottom: 0;
+}
+
+.single_row {
+  width: 90%;
+}

@@ -1,0 +1,139 @@
+body {
+  text-align: center;
+  background-color: rgba(254, 185,0, 0.2);
+}
+
+label {
+  font-family: 'GongGothicMedium', sans-serif
+}
+
+input::placeholder {
+  font-size: 13px;
+}
+
+.container {
+  display: inline-block;
+  text-align: center;
+  width: 60%;
+  margin: auto;
+  background-color: white;
+  border-radius: 20px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding: 5px 5px;
+}
+
+h4 {
+  margin-top: 10px;
+}
+
+.container .field {
+  display: inline-block;
+  margin: 10px;
+  text-align: left;
+  width: 45%;
+  height: 60px;
+}
+
+.field5 {
+  width: 92% !important;
+  height: 90px !important;
+  padding: 10px;
+  background-color: #FEB900;
+  border-radius: 15px;
+}
+
+.field8 {
+  width: 92% !important;
+}
+
+.purchase-check {
+  height: 90px !important;
+  padding: 10px;
+  background-color: #FEB900;
+  border-radius: 15px;
+}
+
+
+.field5 span, .field8 span {
+  font-size: 13px;
+  color: black;
+}
+
+.field6 label {
+  width: 100%;
+}
+
+.field6 select {
+  width: 30%;
+  display: inline-block;
+  height: 38px;
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+
+.field9 span {
+  font-size: 13px;
+}
+
+.field9 label {
+  display: block;
+}
+
+.field9 input {
+  width: 65% !important;
+  margin-right: 0px;
+  display: inline-block;
+}
+
+.field13, .field14 {
+  width: 92% !important;
+}
+
+.privacy-policy {
+  height: 130px;
+  overflow: scroll;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 5px;
+  margin-bottom: 10px;
+  font-size: 11px;
+}
+
+.privacy-policy-header {
+  margin-bottom: 5px;
+  font-family: 'GongGothicMedium', sans-serif;
+}
+
+.btn-outline-secondary {
+  width: 33%;
+  padding: 5px;
+}
+
+.notice-list {
+  text-align: left;
+  font-size: 11px;
+  margin-bottom: 0px;
+}
+
+.btn-primary {
+  margin-top: 8px;
+  margin-bottom:10px;
+  border: 0;
+  background-color: rgb(35,35,35);
+}
+
+.btn-primary:hover {
+  background-color: #FEB900;
+  color: black;
+  cursor: pointer;
+}
+
+hr {
+  margin: 8px 0;
+}
+
+.notice-header {
+  margin-bottom: 0;
+  margin-top: 8px;
+}

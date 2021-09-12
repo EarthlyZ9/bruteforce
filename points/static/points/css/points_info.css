@@ -1,0 +1,31 @@
+strong {
+  font-family: 'GongGothicMedium', sans-serif;
+}
+
+.page-header {
+  width: 100%;
+  background-color: #FEB900;
+  color: black;
+  border-radius: 10px;
+  padding: 10px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.page-header h1 {
+  margin: auto;
+  display: inline-block;
+}
+.page-header p {
+  float: right;
+}
+
+.accordion-button:not(.collapsed) {
+  color:black;
+  background-color: #FFDCA0;
+}
+
+.specifics {
+  font-size: 12px;
+}
+

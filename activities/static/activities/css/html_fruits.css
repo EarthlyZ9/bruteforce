@@ -1,0 +1,249 @@
+html {
+  width: 100%;
+  height: 100%;
+}
+body {
+  height: calc(100% - 60px);
+}
+.container {
+  text-align: center;
+  display: inline-block;
+}
+
+.container-fluid {
+  width: 100%;
+  height: 100%;
+}
+
+
+.table {
+  text-align: center;
+  margin: 10px auto;
+  width: 100%;
+}
+
+#page-header {
+  text-align: left;
+  margin-left: 0;
+  width: 100%
+}
+
+.form-control  {
+  display: inline-block;
+}
+input::placeholder {
+  font-size: 13px;
+}
+#header-row {
+  margin: auto;
+  width: 100%;
+  text-align: left;
+  padding: 0;
+}
+
+#topic-dropdown {
+  display: inline-block;
+}
+
+#search {
+  width: 40%;
+  float: right;
+}
+.btn-outline-success {
+  display: inline-block;
+  width: 40%;
+  border-color:black;
+  color: black;
+}
+
+.btn-outline-success:hover {
+  background-color: #FEB900;
+  border-color: #FEB900;
+}
+
+#feedback-right {
+  width: 100%;
+  background-color: gray;
+  display: inline-block;
+  height: 100%;
+}
+
+#table-left {
+  margin-top: 15px;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+
+.left {
+  width: 60%;
+  float: left;
+  height: 100%;
+}
+
+.right {
+  width: 40%;
+  background-color: rgba(170,170,170,0.3);
+  float: right;
+  height: 100%;
+  padding: 10px;
+  text-align: center;
+}
+
+.whole {
+  width: 100%;
+  height: 100%;
+}
+
+.variable-context {
+  border: 1px solid rgba(0,0,0,0.2);
+  height: 93%;
+}
+
+.feedbacks {
+  height: 78%;
+  margin-bottom: 5px;
+  overflow: scroll;
+  padding: 2px;
+  border-bottom: 1px solid rgba(0,0,0,0.2);;
+}
+
+.input-feedback {
+  display: inline-block;
+  width: 100%;
+  height: 22%;
+  text-align: center;
+}
+
+.form-control {
+  font-size: 14px;
+}
+
+.input {
+  display: inline-block;
+  width: 75%;
+}
+
+.form-group {
+  height: 100%;
+}
+
+.form-group textarea {
+  height: 100%;
+  margin-left: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.buttons {
+  width: 22%;
+  float: right;
+}
+
+.btn {
+  padding: 5px;
+  height: 48%;
+}
+
+.btn-primary {
+  margin: 0;
+  border: 0;
+  background-color: rgb(35,35,35);
+  font-size: 15px;
+  width: 90%;
+}
+
+.btn-primary:hover {
+  background-color: #FEB900;
+  color: black;
+}
+
+.btn-primary:focus  {
+  background-color: #FEB900;
+}
+
+h6 {
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+.float-contact {
+  visibility: hidden;
+}
+
+.badge {
+  color: black;
+  text-align: right;
+  padding: 3px !important;
+  background-color: rgba(170,170,170,0.3);
+  font-size: 11px;
+}
+
+.card-body {
+  padding: 3px;
+}
+
+.card-text {
+  font-size: 14px;
+}
+
+hr {
+  margin-top: 1px;
+  margin-bottom: 3px;
+}
+
+.form-group {
+  width: 80%;
+  float: left;
+}
+
+#post_feedback {
+  width: 100%;
+  height: 90%;
+}
+
+.buttons {
+  float: right;
+  width: 18%;
+}
+
+.btn-outline-success {
+  display: inline-block;
+  width: 30%;
+  border-color:black;
+  color: black;
+}
+
+.btn-outline-success:hover {
+  background-color: #FEB900;
+  border-color: #FEB900;
+}
+
+.page-link {
+  color: black;
+}
+
+.page-link:focus {
+  color: black;
+  background-color: rgba(254,185,0,0.3);
+}
+
+.page-link:hover {
+  background-color: rgba(254,185,0,0.3);
+  color: black;
+}
+.page-item.active .page-link {
+  background-color: #FEB900;
+  border-color: #FEB900;
+  color: black;
+}
+.break {
+  width: 100%;
+  height: 0;
+  display: inline-block;
+}
+
+#badge_count {
+  color: white;
+  line-height: 13px;
+}

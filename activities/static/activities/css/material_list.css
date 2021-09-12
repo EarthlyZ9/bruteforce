@@ -1,0 +1,110 @@
+
+.container {
+  text-align: center;
+}
+
+
+.table {
+  text-align: center;
+  margin: 10px auto;
+  width: 85%;
+}
+
+.curriculum_header {
+  width: 200px;
+  margin: 10px 10px;
+  display: inline-block;
+  text-align: center;
+  height: 44px;
+  vertical-align: middle;
+  background-color: #FEB900;
+  border-radius: 22px;
+
+}
+
+#page-header {
+  text-align: left;
+}
+.form-control  {
+  display: inline-block;
+}
+input::placeholder {
+  font-size: 13px;
+}
+#header-row {
+  margin: auto;
+  width: 85%;
+  text-align: left;
+  padding: 0;
+}
+
+#category-dropdown {
+  display: inline-block;
+}
+
+#search {
+  width: 40%;
+  float: right;
+}
+.btn-outline-success {
+  display: inline-block;
+  width: 30%;
+  border-color:black;
+  color: black;
+}
+
+.btn-outline-success:hover {
+  background-color: #FEB900;
+  border-color: #FEB900;
+}
+
+h5 {
+  text-align: center;
+  display: inline-block;
+  line-height: 44px;
+  margin-bottom: 0;
+  font-size: 1rem;
+}
+
+.btn-primary {
+  color: black;
+  margin: 10px 10px;
+  width: 200px;
+  display: inline-block;
+  border-radius: 22px;
+  border: 0;
+  background-color: #FEB900;
+  line-height: 44px;
+  padding: 0;
+}
+
+.btn-primary:hover {
+  background-color: rgb(35,35,35);
+  color: white;
+}
+
+#course_icon {
+  margin-right: 10px;
+}
+
+hr {
+  margin: 10px auto;
+}
+.page-link {
+  color: black;
+}
+
+.page-link:focus {
+  color: black;
+  background-color: rgba(254,185,0,0.3);
+}
+
+.page-link:hover {
+  background-color: rgba(254,185,0,0.3);
+  color: black;
+}
+.page-item.active .page-link {
+  background-color: #FEB900;
+  border-color: #FEB900;
+  color: black;
+}

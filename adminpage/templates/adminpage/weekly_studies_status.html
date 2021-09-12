@@ -1,0 +1,209 @@
+{% extends 'main/base.html' %}
+<head>
+  {% load static %}
+  {% load adminpage_filter %}
+  {% block extrahead %}
+  <link href={% static 'adminpage/css/weekly_studies_status.css' %} rel="stylesheet" />
+  {% endblock extrahead %}
+</head>
+
+<body>
+  {% block container %}
+    <div class="container-fluid" style="margin-top:15px;">
+      <div class='backhome'><a href="{% url 'admin-page:admin-page' %}"><i class="fas fa-home" style="font-size:30px;"></i></a></div>
+      <h1>수강생 주차별 학습활동 제출 현황</h1>
+      <table class='table exp'>
+        <thead>
+          <tr>
+            <th scope="col">코스</th>
+            <th scope="col">9주차</th>
+            <th scope="col">10주차</th>
+            <th scope="col">11주차</th>
+            <th scope="col">12주차</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>파이썬</th>
+            <th>추가복습문제(1)</th>
+            <th>추가복습문제(1)</th>
+            <th>제출사항 없음</th>
+            <th>파이널 프로젝트</th>
+          </tr>
+          <tr>
+            <th>데이터 사이언스</th>
+            <th>프로젝트 계획서</th>
+            <th>제출사항 없음</th>
+            <th>파이널 프로젝트 제출</th>
+            <th>파이널 프로젝트 세션</th>
+          </tr>
+          <tr>
+            <th>웹 퍼블리싱</th>
+            <th>프로젝트 계획서</th>
+            <th>제출사항 없음</th>
+            <th>파이널 프로젝트 제출</th>
+            <th>파이널 프로젝트 공모(투표) 기간</th>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="container-fluid" id="header-row">
+        <div class="col-2" id="course-dropdown">
+          <select class="form-select course">
+            <option value="all" {% if course == 'all' %}selected{% endif %}>전체</option>
+            <option value="python" {% if course == 'python' %}selected{% endif %}>파이썬</option>
+            <option value="datascience" {% if course == 'datascience' %}selected{% endif %}>데이터 사이언스</option>
+            <option value="htmlcss" {% if course == 'htmlcss' %}selected{% endif %}>웹 퍼블리싱</option>
+          </select>
+        </div>
+        <div class="d-flex" id="search">
+          <input class="form-control me-2 kw" type="search" placeholder="검색어를 입력하세요." aria-label="Search" id="search-input">
+          <button class="btn btn-outline-success" type="submit" id="btn_search">찾기</button>
+        </div>
+      </div>
+      
+      <table class="table table-condensed table-stripped table-hover table-bordered" style="width: 90%">
+        <thead class="table-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">이름</th>
+            <th scope="col">ID</th>
+            <th scope="col">코스</th>
+            <th scope="col" style="width: 40px;">1출</th>
+            <th scope="col" style="width: 40px;">1활동</th>
+            <th scope="col" style="width: 40px;">1기타</th>
+            <th scope="col" style="width: 40px;">2출</th>
+            <th scope="col" style="width: 40px;">2활동</th>
+            <th scope="col" style="width: 40px;">2기타</th>
+            <th scope="coL" style="width: 40px;">3출</th>
+            <th scope="col" style="width: 40px;">3활동</th>
+            <th scope="col" style="width: 40px;">3기타</th>
+            <th scope="col" style="width: 40px;">4출</th>
+            <th scope="col" style="width: 40px;">4활동</th>
+            <th scope="col" style="width: 40px;">4기타</th>
+            <th scope="col" style="width: 40px;">5출</th>
+            <th scope="col" style="width: 40px;">5활동</th>
+            <th scope="col" style="width: 40px;">5기타</th>
+            <th scope="col" style="width: 40px;">6출</th>
+            <th scope="col" style="width: 40px;">6활동</th>
+            <th scope="col" style="width: 40px;">6기타</th>
+            <th scope="col" style="width: 40px;">7출</th>
+            <th scope="col" style="width: 40px;">7활동</th>
+            <th scope="col" style="width: 40px;">7기타</th>
+            <th scope="col" style="width: 40px;">8출</th>
+            <th scope="col" style="width: 40px;">8활동</th>
+            <th scope="col" style="width: 40px;">8기타</th>
+            <th scope="col" style="width: 40px;">9출</th>
+            <th scope="col" style="width: 40px;">9활동</th>
+            <th scope="col" style="width: 40px;">9기타</th>
+            <th scope="col" style="width: 40px;">10출</th>
+            <th scope="col" style="width: 40px;">10활동</th>
+            <th scope="col" style="width: 40px;">10기타</th>
+            <th scope="col" style="width: 40px;">11출</th>
+            <th scope="col" style="width: 40px;">11활동</th>
+            <th scope="col" style="width: 40px;">11기타</th>
+            <th scope="col" style="width: 40px;">12출</th>
+            <th scope="col" style="width: 40px;">12활동</th>
+            <th scope="col" style="width: 40px;">12기타</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for user in user_reverse %}
+          <tr>
+            <td>{{user_reverse.paginator.count|sub:user_reverse.start_index|sub:forloop.counter0|add:1 }}</td>
+            <td>{{user.name}}</td>
+            <td>{{user.username}}</td>
+            <td>{{user.get_course_display}}</td>
+            {% for record in user.weeklystudies_set.all %} <!--orderby 안써도되나-->
+              <td>{% if record.attendance %}<i class="fas fa-check"></i>{% else %}<i class="fas fa-times"></i>{% endif %}</td>
+              <td>{% if record.file %}<a href=#><i class="fas fa-file-download"></i></a>{% else %}<i class="fas fa-times"></i></a>{% endif %}</td>
+              <td>{% if record.url %}<a href=#><i class="fas fa-external-link-alt"></i></a>{% else %}<i class="fas fa-times"></i>{% endif %}</td>
+            {% endfor %}
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+
+      <!-- 페이징처리 시작 -->
+      <ul class="pagination justify-content-center">
+          <!-- 이전페이지 -->
+        {% if study_records.has_previous %}
+        <li class="page-item">
+            <a class="page-link" data-page="{{ 1 }}" href="#"> << </a>
+        </li>
+        <li class="page-item">
+            <a class="page-link" data-page="{{ study_records.previous_page_number }}" href="#"> < </a>
+        </li>
+        {% else %}
+        <li class="page-item disabled">
+            <a class="page-link"> << </a>
+        </li>
+        <li class="page-item disabled">
+            <a class="page-link" tabindex="-1" aria-disabled="true" href="#"> < </a>
+        </li>
+        {% endif %}
+        <!-- 페이지리스트 -->
+        {% for page_number in user_list.paginator.page_range %}
+            {% if page_number >= study_records.number|add:-5 and page_number <= study_records.number|add:5 %}
+            {% if page_number == user_list.number %}
+            <li class="page-item active" aria-current="page">
+                <a class="page-link" data-page="{{ page_number }}" href="#">{{ page_number }}</a>
+            </li>
+            {% else %}
+            <li class="page-item">
+                <a class="page-link" data-page="{{ page_number }}"href="#" >{{ page_number }}</a>
+            </li>
+            {% endif %}
+            {% endif %}
+        {% endfor %}
+        <!-- 다음페이지 -->
+        {% if study_rocords.has_next %}
+        <li class="page-item">
+            <a class="page-link" data-page="{{ study_records.next_page_number }}" href="#"> > </a>
+        </li>
+        <li class="page-item">
+            <a class="page-link" data-page="{{ study_records.paginator.count }}" href="#" > >> </a>
+        </li>
+        {% else %}
+        <li class="page-item disabled">
+            <a class="page-link" tabindex="-1" aria-disabled="true" href="#"> > </a>
+        </li>
+        <li class="page-item disabled">
+            <a class="page-link"> >> </a>
+        </li>
+        {% endif %}
+      </ul>
+    <!-- 페이징처리 끝 -->
+    </div>
+
+      <form id="searchForm" method="get" action="{% url 'admin-page:weekly-studies' %}">
+        <input type="hidden" id="kw" name="kw" value="{{ kw|default_if_none:'' }}">
+        <input type="hidden" id="page" name="page" value="{{ page }}">
+        <input type="hidden" id="course" name="course" value="{{ course }}">
+      </form>
+  {% endblock %}
+
+  {% block extrascript %}
+  <script type='text/javascript'>
+  $(document).ready(function(){
+      $(".page-link").on('click', function() {
+      $("#page").val($(this).data("page"));
+      $("#searchForm").submit();
+      });
+      $("#btn_search").on('click', function() {
+          $("#kw").val($(".kw").val());
+          $("#page").val(1);
+          $("#searchForm").submit();
+      });
+      $(".course").on('change', function() {
+          $("#course").val($(this).val());
+          $("#page").val(1);
+          $("#searchForm").submit();
+      });
+    });
+  </script>
+  <script src={% static 'adminpage/js/enterkey.js' %}></script>
+  {% endblock%}
+  
+</body>

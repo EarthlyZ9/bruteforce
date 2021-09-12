@@ -1,0 +1,62 @@
+#points-table {
+  text-align: center;
+}
+.container {
+  text-align: center;
+}
+.complete {
+  color: #FEB900;
+}
+
+
+#header h1, #header p {
+  text-align: left;
+}
+
+.status-exp {
+  border-radius: 10px;
+  background-color: rgba(254,185,0, 0.2);
+  height: 40px;
+  width: 85%;
+  display: inline-block;
+  margin-bottom: 15px;
+}
+
+.status-exp ul {
+  list-style: none;
+  line-height: 40px;
+  vertical-align: middle;
+}
+
+.status-exp li {
+  float: left;
+  vertical-align: middle;
+  line-height: 40px;
+  margin: auto 10px;
+}
+
+.table {
+  --bs-table-striped-bg: rgba(254,185,0,0.05);
+  width: 85%;
+  margin: auto;
+  margin-bottom: 10px;
+}
+
+caption {
+  font-size: 13px;
+}
+
+
+.help_btn {
+  display: inline-block;
+  text-align: right;
+  margin: auto;
+}
+
+.help_btn a {
+  text-decoration: none;
+  padding: 7px;
+  border-radius: 10px;
+  background-color: rgb(35,35,35);
+  color: white;
+}

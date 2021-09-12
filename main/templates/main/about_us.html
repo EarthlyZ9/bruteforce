@@ -1,0 +1,14 @@
+{% extends './base.html' %}
+<head>
+  {% load static %}
+  {% block extrahead %}
+  <link href={% static 'main/css/about_us.css' %} rel="stylesheet" />
+  {% endblock extrahead %}
+</head>
+<body>
+  {% block container %}
+  <div id="about_us">
+    <img src={% static 'main/images/BF_intro.png' %}>
+  </div>
+  {% endblock container %}
+</body>

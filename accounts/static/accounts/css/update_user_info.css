@@ -1,0 +1,96 @@
+html {
+  height: 100%;
+}
+
+body {
+  text-align: center;
+  background-color: #FEB900;
+  position: fixed; 
+	overflow-y: scroll;
+	width: 100%;
+  height: 100%;
+}
+
+
+h2 {
+  margin: 8px auto;
+}
+
+fieldset {
+  margin: 0 auto;
+}
+
+.info {
+  display: inline-block;
+  margin: 8px;
+  text-align: left;
+  width: 300px;
+}
+
+
+.info select, .info input {
+  height: 50px;
+}
+
+hr {
+  width: 90%;
+  margin: 10px auto;
+}
+
+#update-form {
+  margin: 0 auto;
+}
+
+
+#update-form p {
+  text-align: left;
+  width: 300px;
+  display: inline-block;
+  margin: 8px;
+}
+
+#update-form p input, #update-form p select {
+  height: 50px;
+}
+
+#profile-container {
+  margin: 7px auto;
+  text-align: center;
+  width: 75%;
+  border-radius: 30px;
+  background-color: white;
+  vertical-align: middle;
+  padding: 0;
+}
+
+.btn-primary {
+  margin-top: 8px;
+  margin-bottom:8px;
+  border: 0;
+  background-color: rgb(35,35,35);
+}
+
+.btn-primary:hover {
+  background-color: #FEB900;
+  color: black;
+}
+
+/**태블릿 사이즈 조건 **/
+@media (min-width: 767px) {
+  fieldset {
+    width: 400px;
+  }
+  #update-form {
+    width: 400px;
+  }
+}
+
+@media (min-width: 992px) {
+  fieldset {
+    width: 750px;
+  }
+  #update-form {
+    width: 750px;
+  }
+}
+

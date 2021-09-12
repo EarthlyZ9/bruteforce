@@ -1,0 +1,137 @@
+{% extends 'main/base.html' %}
+<head>
+  {% load static %}
+  {% block extrahead %}
+  <link href="{% static 'discussions/css/question_detail.css' %}" rel="stylesheet" />
+  {% endblock extrahead %}
+</head>
+  {% block container %}
+    <div class="container my-3" id='container'>
+    <!--필요없는거 같은데?-->
+    {% if messages %}
+    <div class="alert alert-danger my-3" role="alert">
+    {% for message in messages %}
+        <strong>{{ message.tags }}</strong>
+        <ul><li>{{ message.message }}</li></ul>
+    {% endfor %}
+    {% endif %}
+    <!--웅그치-->
+      <div class='container header'>
+        <div class='d-flex justify-content-between'>
+          <p class='category'>{{question.get_category_display}}</p>
+          <a type='button' class='btn btn-primary back' href="{% url 'discussions:question-list' %}">목록으로</a>
+        </div>
+        <h2>{{ question.title }}</h2>
+      </div>
+      <hr style="margin:0;">
+      
+      <div class="card" id='question_content'>
+          <div class="card-body">
+              <div class="card-text" style="white-space: pre-line;">{{ question.content }}</div>
+              <div class="d-flex justify-content-between align-items-end">
+                <div class='source-code'>소스코드 보러 가기: {% if question.url %}<a href="{{question.url}}">{{question.url}}</a>{% endif %}</div>
+                <div class="badge bg-light text-dark p-1">{{question.author}}<br>{{ question.create_date|date:"Y-m-d, P" }}</div>
+              </div>
+          </div>
+      </div>
+      {% if question.modify_date %}
+        <div><p class='modify_date'>수정일시: {{question.modify_date|date:"Y-m-d, P"}}</p></div>
+      {% endif %}
+      {% if request.user == question.author %}
+        <div class="modify-delete">
+          <a href="{% url 'discussions:modify-question' question.id  %}" class="btn btn-sm btn-outline-secondary">수정</a>
+          <a href="#" class="delete btn btn-sm btn-outline-secondary" data-uri="{% url 'discussions:delete-question' question.id  %}">삭제</a>
+        </div>
+      {% endif %}
+      <!--답변 영역-->
+      <div class="answers my-3">
+        <h5 class="border-bottom my-3 py-2">{{question.answer_set.count}}개의 답변이 있습니다.</h5>
+        {% for answer in question.answer_set.all %}
+        <a name="answer_{{ answer.id }}"></a>
+        <div class="row my-3">
+          <div class='right-column col-1'>
+            <div class=" vote-count">  <!-- 추천영역 -->
+              <div class="bg-light text-center p-3 border font-weight-bolder mb-1" id='voter_counts'>{{answer.voter.count}}</div>
+              <a href="#" type='button' class="recommend btn btn-sm btn-secondary btn-block my-1" id='recommend' onclick="recommend(this)">추천</a>
+            </div>
+            
+          </div>
+          <div class="col-11">  <!-- 답변영역 -->
+            <div class="card" id='comment_card' answerid="{{answer.id}}">
+              <div class="card-body">
+                <div class="card-text" style="white-space: pre-line;">{{ answer.content }}</div>
+              </div>
+              <div class='d-flex justify-content-between'>
+                <div class="badge bg-light text-dark p-1 answer-author" style="height: fit-content;">
+                  <p style="margin-bottom: 0px;">{{ answer.author.username }}</p>
+                  {%if answer.modify_date %}
+                  <p style="margin-bottom: 0px;">{{ answer.modify_date|date:"Y-m-d P"}}</p>
+                  {% else %}
+                  <p style="margin-bottom: 0px;">{{ answer.create_date|date:"Y-m-d P"}}</p>
+                  {% endif %}
+                </div>
+                {% if request.user == answer.author %}
+                  <div class="modify-delete-answer" style="margin-right:10px;">
+                    <a href="{% url 'discussions:modify-answer' answer.id  %}" onclick="window.open(this.href, '_blank', 'width=600, height=300'); return false;" class="btn btn-sm btn-outline-secondary">수정</a>
+                    <a href="#" class="delete btn btn-sm btn-outline-secondary " data-uri="{% url 'discussions:delete-answer' answer.id  %}">삭제</a>
+                  </div>
+                {% endif %}
+              </div>
+              
+              <!--댓글 영역-->
+              {% if answer.comment_set.count > 0 %}
+              <div class="mt-2 comment-div">
+              {% for comment in answer.comment_set.all %}
+              <a name="comment_{{ comment.id }}"></a>
+                <div class="comment mb-2 py-2 text-muted">
+                  <span style="white-space: pre-line; font-size: 14px; margin-left: 10px;">{{ comment.content }}</span>
+                  <span class='comment-info'>
+                    - {{ comment.author }}
+                    {% if comment.modify_date %}
+                    {{ comment.modify_date }}
+                    {% else %}
+                    {{ comment.create_date }}
+                    {% endif %}
+                    {% if request.user == comment.author %}
+                    <a href="{% url 'discussions:modify-answer-comment' comment.id  %}" class="small" onclick="window.open(this.href, '_blank', 'width=600, height=300'); return false;">수정</a>,
+                    <a href="#" class="small delete" data-uri="{% url 'discussions:delete-answer-comment' comment.id  %}">삭제</a>
+                    {% endif %}
+                  </span>
+                </div>
+              {% endfor %}
+              </div>
+              {% endif %}
+              <div>
+                  <a href="{% url 'discussions:create-answer-comment' answer.id  %}" onclick="window.open(this.href, '_blank', 'width=600, height=300'); return false;" class="small" style='margin-left: 10px;'><small>댓글 추가 ...</small></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      <!--댓글 영역 끝-->
+
+      <footer class="container mt-auto py-1" id='input-area'>
+        <form action="{% url 'discussions:create-answer' question.id %}" method="post" class="my-3 d-flex align-items-center" onsubmit="return validate()" novalidate>
+            {% csrf_token %}
+            <div class="form-group me-3">
+                <textarea name="content" id="content" class="form-control" rows="4"></textarea>
+            </div>
+            <input style="float:right;" type="submit" value="답변등록" class="btn btn-primary my-3">
+        </form>
+      </footer>
+    </div>
+  {% endblock %}
+
+  {% block extrascript %}
+  <script type='text/javascript'>
+  $(document).ready(function(){
+      $(".delete").on('click', function() {
+          if(confirm("정말로 삭제하시겠습니까?")) {
+              location.href = $(this).data('uri');
+          }
+      });
+  });
+  </script>
+  <script src="{% static 'discussions/js/question_detail.js' %}"></script>
+  {% endblock %}

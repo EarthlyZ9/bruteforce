@@ -1,0 +1,117 @@
+html, body {
+  height: 97%;
+}
+
+
+.container {
+  text-align: center;
+  padding: 0;
+}
+
+.text {
+  text-align: left;
+  display: inline-block;
+  width: auto;
+}
+
+.week-num {
+  font-size: 40px;
+  border-radius: 10px;
+  color: white;
+  background-color: rgb(35,35,35);
+  font-family: 'GongGothicLight', sans-serif;
+  width: auto;
+  margin: 15px 0 10px 0;
+  width: 15%;
+  height: 65px;
+  float: right;
+}
+
+.week-num h1 {
+  font-size: 50px;
+  margin: auto;
+  line-height: 65px;
+  width: auto;
+  display: inline-block;
+}
+
+.variable-num {
+  width: auto;
+  display: inline-block;
+  font-size: 50px;
+  margin: auto;
+  line-height: 65px;
+}
+
+.step {
+  margin-bottom: 15px;
+}
+
+#header {
+  text-align: left;
+  margin: auto 0;
+  display: inline-block;
+}
+.step-header {
+  margin-bottom: 20px;
+  height: 30px;
+  width: 100%;
+  background-color: #FEB900;
+  display: inline-block;
+  border-radius: 20px;
+}
+
+.input-box {
+  display: inline-block;
+  width: 100%;
+}
+
+
+.input-div {
+  display: inline-block;
+  width: 48%;
+  margin: 10px 5px;
+}
+
+.input-text {
+  margin-top:10px;
+  padding: 20px 12px 12px 12px !important;
+}
+
+#AttendanceInput {
+  height: 100px;
+}
+
+#counter {
+  width: 100%;
+  text-align: right;
+  float: right;
+}
+
+.btn-primary {
+  margin: 0;
+  border: 0;
+  background-color: rgb(35,35,35);
+}
+
+.btn-primary:hover {
+  background-color: #FEB900;
+  color: black;
+}
+
+.btn-primary:focus  {
+  background-color: #FEB900;
+}
+
+label {
+  color: #aaa;
+  font-size: 14px;
+  padding: 12px !important;
+}
+
+
+hr {
+  border-bottom: 2px dashed #aaa;
+  background-color: transparent;
+  margin: 15px auto;
+}

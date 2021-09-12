@@ -1,0 +1,36 @@
+<!--채팅 아이콘 눌렀을 때, 해당 fruit 가져오기-->
+  <h1 style="text-align:left; margin-bottom:5px;">Feedbacks</h1>
+  <div class='variable-context'>
+  {% if fruit.feedbacks_set %}
+    <div class='feedbacks'>
+      <h6 style="font-size:15px;">{{fruit.feedbacks_set.count}}개의 피드백이 있습니다.</h6>
+      {% for feedback in fruit.feedbacks_set.all %}
+      <div class="card my-2">
+        <div class="card-body">
+            <div class="card-text" style="white-space: pre-line;">{{ feedback.content }}</div>
+            <hr>
+            <div class="d-flex justify-content-end">
+                <div class="badge badge-light">
+                  {{ feedback.author }}
+                  {{ feedback.create_date }}
+                </div>
+            </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+    <div class='input-feedback'>
+      <form method="post" id="post_feedback" fruitid="{{fruit.id}}">
+        {% csrf_token %}
+        <div class='form-group'>
+          <textarea name = 'content' class="form-control" id='input_feedback' maxlength="300"></textarea>
+        </div>
+        <div class='buttons'>
+          <a class="recommend btn btn-primary" style="margin-bottom: 5px;" id="like" onclick="like(this)">칭찬하기</a>  
+          <a class='btn btn-primary' type='button' onclick="post_feedback(this)" id='submit_btn'>등록하기</a>
+        </div>
+      </form>
+    </div>
+  </div>

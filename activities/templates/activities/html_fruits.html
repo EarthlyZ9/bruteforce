@@ -1,0 +1,170 @@
+{% extends 'main/base.html' %}
+<head>
+  {% load static %}
+  {% load activities_filter %}
+  {% block extrahead %}
+  <link href="{% static 'activities/css/html_fruits.css' %}" rel="stylesheet" />
+  {% endblock extrahead %}
+</head>
+
+<body>
+  {% block container %}
+  <div class="whole">
+    <div class='left'>
+      <div class="container" id='table-left'>
+        <div class="container" id="page-header">
+          <h1>웹퍼블리싱 코스 성과물</h1>
+          <p>다른 수강생들의 웹 퍼블리싱 작품들을 칭찬해주세요 :)</p>
+          <p style="font-size: 12px; text-align: right;">모바일 환경은 권장하지 않습니다 :(</p>
+        </div>
+
+        <div class="container" id="header-row">
+          <div class="col-2" id="topic-dropdown">
+            <select class="form-select topic">
+              <option value="all" {% if topic == 'all' %}selected{% endif %}>전체</option>
+              <option value="semi1" {% if topic == 'common' %}selected{% endif %}>세미 프로젝트 1</option>
+              <option value="semi2" {% if topic == 'python' %}selected{% endif %}>세미 프로젝트 2</option>
+              <option value="semi3" {% if topic == 'datascience' %}selected{% endif %}>세미 프로젝트 3</option>
+              <option value="hfinal" {% if topic == 'htmlcss' %}selected{% endif %}>파이널 프로젝트</option>
+            </select>
+          </div>
+          <div class="d-flex" id="search">
+            <input class="form-control me-2 kw" type="search" placeholder="검색어를 입력하세요." aria-label="Search" id="search-input">
+            <button class="btn btn-outline-success" type="submit" id="btn_search">찾기</button>
+          </div>
+        </div>
+        
+        <table class="table table-condensed table-stripped table-hover">
+          <thead class="table-dark">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">토픽</th>
+              <th scope="col">만든이</th>
+              <th scope="col">작품</th>
+              <th scope="col">바로가기</th>
+              <th scope="col"><i class="fas fa-thumbs-up"></i></th>
+              <th scope="col"><i class="fas fa-comments"></i></th>
+            </tr>
+          </thead>
+          <tbody>
+            {% if html_fruits %}
+            {% for record in html_fruits %}
+            <tr>
+              <td>{{html_fruits.paginator.count|sub:html_fruits.start_index|sub:forloop.counter0|add:1 }}</td>
+              <td  id='topic'>{{record.topic}}</td>
+              <td id='userID'>{{record.author}}</td>
+              <td>
+                {{record.author}}님의 {{record.get_topic_display}}
+                {% if record.feedbacks_set.count > 0 %}
+                <span class="badge bg-secondary mx-2" id='badge_count'>{{ record.feedbacks_set.count }}</span>
+                {% endif %}
+              </td>
+              <td><a href={{record.url}} type="button" target='_blank'><i class="fas fa-external-link-alt" style='color:#FEB900;'></i></a></td>
+              <td id="voter_counts">{{record.voter.count}}</td>
+              <td><a href='#' type="button" id="btn_get"><i class="fas fa-comments" style='color:#FEB900;'></i></a></td>
+            </tr>
+            {% endfor %}
+            {% endif %}
+          </tbody>
+        </table>
+      
+        <!-- 페이징처리 시작 -->
+        <ul class="pagination justify-content-center">
+        <!-- 이전페이지 -->
+          {% if html_fruits.has_previous %}
+          <li class="page-item">
+              <a class="page-link" data-page="{{ 1 }}" href="#"> << </a>
+          </li>
+          <li class="page-item">
+              <a class="page-link" data-page="{{ html_fruits.previous_page_number }}" href="#"> < </a>
+          </li>
+          {% else %}
+          <li class="page-item disabled">
+              <a class="page-link"> << </a>
+          </li>
+          <li class="page-item disabled">
+              <a class="page-link" tabindex="-1" aria-disabled="true" href="#"> < </a>
+          </li>
+          {% endif %}
+          <!-- 페이지리스트 -->
+          {% for page_number in html_fruits.paginator.page_range %}
+            {% if page_number >= html_fruits.number|add:-5 and page_number <= html_fruits.number|add:5 %}
+            {% if page_number == html_fruits.number %}
+            <li class="page-item active" aria-current="page">
+                <a class="page-link" data-page="{{ page_number }}" href="#">{{ page_number }}</a>
+            </li>
+            {% else %}
+            <li class="page-item">
+                <a class="page-link" data-page="{{ page_number }}"href="#" >{{ page_number }}</a>
+            </li>
+            {% endif %}
+            {% endif %}
+          {% endfor %}
+          <!-- 다음페이지 -->
+          {% if html_fruits.has_next %}
+          <li class="page-item">
+              <a class="page-link" data-page="{{ html_fruits.next_page_number }}" href="#"> > </a>
+          </li>
+          <li class="page-item">
+              <a class="page-link" data-page="{{ html_fruits.paginator.count }}" href="#" > >> </a>
+          </li>
+          {% else %}
+          <li class="page-item disabled">
+              <a class="page-link" tabindex="-1" aria-disabled="true" href="#"> > </a>
+          </li>
+          <li class="page-item disabled">
+              <a class="page-link"> >> </a>
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+      <!-- 페이징처리 끝 -->
+
+      <form id="searchForm" method="get" action="{% url 'activities:htmlcss-fruits' %}">
+        <input type="hidden" id="kw" name="kw" value="{{ kw|default_if_none:'' }}">
+        <input type="hidden" id="page" name="page" value="{{ page }}">
+        <input type="hidden" id="topic" name="topic" value="{{ topic }}">
+      </form>
+    </div>
+    <!--피드백 영역-->
+    <div class='right' id='right_div'>
+      <h1 style="text-align:left; margin-bottom: 2px;">Feedbacks</h1>
+      <div class='variable-context d-flex align-items-center justify-content-center'>
+        <div>
+          <p style="display:inline;">피드백을 남겨볼까요?</p> <br>
+          <p style="display:inline;">좌측의 <i class="fas fa-comments" style='color:#FEB900;'></i> 버튼을 눌러보세요!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endblock %}
+
+  {% block extrascript %}
+  <script type='text/javascript'>
+  $(document).ready(function(){
+      $(".page-link").on('click', function() {
+      $("#page").val($(this).data("page"));
+      $("#searchForm").submit();
+      });
+      $("#btn_search").on('click', function() {
+          $("#kw").val($(".kw").val());
+          $("#page").val(1);
+          $("#searchForm").submit();
+      });
+      $(".topic").on('change', function() {
+          $("#topic").val($(this).val());
+          $("#page").val(1);
+          $("#searchForm").submit();
+      });
+      $(".recommend").on('click', function() {
+        console.log('d')
+        if(confirm("정말로 추천하시겠습니까?")) {
+            location.href = $(this).data('uri');
+        }
+      });
+    });
+  </script>
+  <script src="{% static 'activities/js/html_fruits.js' %}"></script>
+  {% endblock %}
+  
+</body>

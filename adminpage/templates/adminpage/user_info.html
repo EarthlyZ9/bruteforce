@@ -1,0 +1,148 @@
+{% extends 'main/base.html' %}
+<head>
+  {% load static %}
+  {% load adminpage_filter %}
+  {% block extrahead %}
+  <link href={% static 'adminpage/css/user_info.css' %} rel="stylesheet" />
+  {% endblock extrahead %}
+</head>
+
+<body>
+  {% block container %}
+    <div class="container" style="margin-top:15px;">
+      <div class='backhome'><a href="{% url 'admin-page:admin-page' %}"><i class="fas fa-home" style="font-size:30px;"></i></a></div>
+      <h1>수강생 정보 조회 (관리자 페이지)</h1>
+      <div class="container" id="header-row">
+        <div class="col-2" id="course-dropdown">
+          <select class="form-select course">
+            <option value="all" {% if course == 'all' %}selected{% endif %}>전체</option>
+            <option value="python" {% if course == 'python' %}selected{% endif %}>파이썬</option>
+            <option value="datascience" {% if course == 'datascience' %}selected{% endif %}>데이터 사이언스</option>
+            <option value="htmlcss" {% if course == 'htmlcss' %}selected{% endif %}>웹 퍼블리싱</option>
+          </select>
+        </div>
+        <div class="d-flex" id="search">
+          <input class="form-control me-2 kw" type="search" placeholder="검색어를 입력하세요." aria-label="Search" id="search-input">
+          <button class="btn btn-outline-success" type="submit" id="btn_search">찾기</button>
+        </div>
+      </div>
+      
+        <table class="table table-condensed table-stripped table-hover">
+          <thead class="table-dark">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Name</th>
+              <th scope="col">Username</th>
+              <th scope="col">Course</th>
+              <th scope="col">Mobile</th>
+              <th scope="col">Univ</th>
+              <th scope="col">Date of Birth</th>
+              <th scope="col">Recommender</th>
+              <th scope="col">Bank Name</th>
+              <th scope="col">Bank Account</th>
+              <th scope="col">Signup Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for user in user_list %}
+            <tr>
+              <td>{{user_list.paginator.count|sub:user_list.start_index|sub:forloop.counter0|add:1 }}</td>
+              <td>{{user.name}}</td>
+              <td>{{user.username}}</td>
+              <td>{{user.get_course_display}}</td>
+              <td>{{user.mobile_num}}</td>
+              <td>{{user.univ}}</td>
+              <td>{{user.date_of_birth}}</td>
+              <td>{{user.recommender}}</td>
+              <td>{{user.bank_name}}</td>
+              <td>{{user.bank_account}}</td>
+              <td>{{user.signup_date}}</td>
+            </tr>
+            {% endfor %}
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 페이징처리 시작 -->
+    <ul class="pagination justify-content-center">
+        <!-- 이전페이지 -->
+        {% if user_list.has_previous %}
+        <li class="page-item">
+            <a class="page-link" data-page="{{ 1 }}" href="#"> << </a>
+        </li>
+        <li class="page-item">
+            <a class="page-link" data-page="{{ user_list.previous_page_number }}" href="#"> < </a>
+        </li>
+        {% else %}
+        <li class="page-item disabled">
+            <a class="page-link"> << </a>
+        </li>
+        <li class="page-item disabled">
+            <a class="page-link" tabindex="-1" aria-disabled="true" href="#"> < </a>
+        </li>
+        {% endif %}
+        <!-- 페이지리스트 -->
+        {% for page_number in user_list.paginator.page_range %}
+            {% if page_number >= user_list.number|add:-5 and page_number <= user_list.number|add:5 %}
+            {% if page_number == user_list.number %}
+            <li class="page-item active" aria-current="page">
+                <a class="page-link" data-page="{{ page_number }}" href="#">{{ page_number }}</a>
+            </li>
+            {% else %}
+            <li class="page-item">
+                <a class="page-link" data-page="{{ page_number }}"href="#" >{{ page_number }}</a>
+            </li>
+            {% endif %}
+            {% endif %}
+        {% endfor %}
+        <!-- 다음페이지 -->
+        {% if user_list.has_next %}
+        <li class="page-item">
+            <a class="page-link" data-page="{{ user_list.next_page_number }}" href="#"> > </a>
+        </li>
+        <li class="page-item">
+            <a class="page-link" data-page="{{ user_list.paginator.count }}" href="#" > >> </a>
+        </li>
+        {% else %}
+        <li class="page-item disabled">
+            <a class="page-link" tabindex="-1" aria-disabled="true" href="#"> > </a>
+        </li>
+        <li class="page-item disabled">
+            <a class="page-link"> >> </a>
+        </li>
+        {% endif %}
+    </ul>
+    <!-- 페이징처리 끝 -->
+
+    <form id="searchForm" method="get" action="{% url 'admin-page:user-info' %}">
+      <input type="hidden" id="kw" name="kw" value="{{ kw|default_if_none:'' }}">
+      <input type="hidden" id="page" name="page" value="{{ page }}">
+      <input type="hidden" id="course" name="course" value="{{ course }}">
+    </form>
+  {% endblock %}
+
+  {% block extrascript %}
+  <script type='text/javascript'>
+  $(document).ready(function(){
+      $(".page-link").on('click', function() {
+      $("#page").val($(this).data("page"));
+      $("#searchForm").submit();
+      });
+      $("#btn_search").on('click', function() {
+          $("#kw").val($(".kw").val());
+          $("#page").val(1);
+          $("#searchForm").submit();
+      });
+      $(".course").on('change', function() {
+          $("#course").val($(this).val());
+          $("#page").val(1);
+          $("#searchForm").submit();
+      });
+    });
+  </script>
+  <script src={% static 'adminpage/js/enterkey.js' %}></script>
+  {% endblock%}
+  
+</body>
