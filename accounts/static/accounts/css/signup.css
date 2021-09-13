@@ -37,18 +37,23 @@ h4 {
 
 .field5 {
   width: 92% !important;
-  height: 90px !important;
+  height: fit-content !important;
   padding: 10px;
   background-color: #FEB900;
   border-radius: 15px;
 }
 
+.field6 {
+  height:fit-content !important;
+}
+
 .field8 {
   width: 92% !important;
+  height: fit-content !important;
 }
 
 .purchase-check {
-  height: 90px !important;
+  
   padding: 10px;
   background-color: #FEB900;
   border-radius: 15px;
@@ -65,7 +70,7 @@ h4 {
 }
 
 .field6 select {
-  width: 30%;
+  width: 29%;
   display: inline-block;
   height: 38px;
   margin-right: 5px;
@@ -136,4 +141,11 @@ hr {
 .notice-header {
   margin-bottom: 0;
   margin-top: 8px;
+}
+
+@media (max-width: 767px) {
+  .container .field {
+    width: 90%;
+    
+  }
 }
