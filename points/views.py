@@ -4,8 +4,10 @@ from django.shortcuts import redirect, render
 from .models import Points_purchase
 from adminpage.models import PointsStatus
 from points.models import PurchaseRequest
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
+@login_required(login_url='accounts:login')
 def points(request):
   user_points_status = PointsStatus.objects.filter(user=request.user).first()
   available_points = user_points_status.total_points - user_points_status.used_points

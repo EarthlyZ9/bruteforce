@@ -12,10 +12,9 @@
 
   <body>
     <div class='d-flex justify-content-center align-items-center'>
-      
-        <img src="{% static 'main/images/404_elements.png' %}" style="width:100%;">
-        <a href="{% url 'main:' %}"><img src="{% static 'main/images/404_button.png' %}" style="width: 100px;"></a>
-      
+      <div class='container-fluid mx-5' style="padding: 0;" id="gradient_background">
+        <img src="{% static 'main/images/404_elements.png' %}">
+        <a href="{% url 'main:main-page' %}"><img src="{% static 'main/images/404_button.png' %}" style="width: 100px;"></a>
     </div>
   </body>
 </html>
