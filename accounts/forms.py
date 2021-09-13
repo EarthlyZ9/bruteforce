@@ -20,7 +20,7 @@ class UserForm(UserCreationForm):
   def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.label_suffix = ""  # Removes : as label suffix
-        self.fields['username'].widget.attrs.update({'class': 'form-control', 'placeholder':'150자 이하, @/./+/-/_ 가능'})
+        self.fields['username'].widget.attrs.update({'class': 'form-control', 'placeholder':'@/./+/-/_ 가능'})
         self.fields['password1'].widget.attrs.update({'class': 'form-control', 'placeholder':'최소 8자 이상의 문자와 숫자로 구성해주세요'})
         self.fields['password2'].widget.attrs.update({'class': 'form-control', 'placeholder':'확인을 위해 한 번 더 입력해주세요'})
         self.error_messages['password_mismatch'] = "비밀번호가 일치하지 않습니다."

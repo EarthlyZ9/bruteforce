@@ -23,16 +23,16 @@ input::placeholder {
   padding: 5px 5px;
 }
 
-h4 {
-  margin-top: 10px;
-}
-
 .container .field {
   display: inline-block;
   margin: 10px;
   text-align: left;
   width: 45%;
   height: 60px;
+}
+
+.availability {
+  font-size: 14px;
 }
 
 .field5 {
@@ -47,13 +47,34 @@ h4 {
   height:fit-content !important;
 }
 
+.purchase-guide {
+  text-align: right;
+  display: inline-block;
+  width: 100%;
+}
+p {
+  margin-bottom: 0;
+  margin-top: 5px;
+  display: inline-block;
+  margin-right: 10px;
+  font-size: 12px;
+}
+
+a {
+  text-align: right;
+  font-size: 12px;
+  display: inline-block;
+}
+
+
+
 .field8 {
   width: 92% !important;
   height: fit-content !important;
 }
 
 .purchase-check {
-  
+  height: fit-content !important;
   padding: 10px;
   background-color: #FEB900;
   border-radius: 15px;
@@ -149,3 +170,12 @@ hr {
     
   }
 }
+
+@media (min-width: 768px) {
+  .field6 select {
+    padding: 5px;
+    margin-right: 3px;
+    margin-left: 3px;
+  }
+}
+

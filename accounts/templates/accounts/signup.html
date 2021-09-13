@@ -17,11 +17,10 @@
         <div class="field-container">
           {% for field in form %}
             <div class="field field{{forloop.counter}}">
-              
               {% if field.name == 'username' %}
                 {{field.label_tag}}
                 {{field}}
-                <button class="btn btn-outline-secondary" type="button" onclick='checkUsernameAvailability()'>중복확인</button>
+                <button class="btn btn-outline-secondary availability" type="button" onclick='checkUsernameAvailability()'>중복확인</button>
                 <div class="valid-feedback">
                 </div>
                 <div class="invalid-feedback">
@@ -31,6 +30,12 @@
                 {{field.label_tag}}
                 {{field}}
                 <span><br>{{field.help_text}}</span>
+                <div class="valid-feedback">
+                  잘하셨습니다!
+                </div>
+                <div class="invalid-feedback">
+                  필수 기입란입니다!
+                </div>
               {% elif forloop.counter == 8 %}
                 <div class="purchase-check">
                   {{field.label_tag}}
@@ -43,6 +48,7 @@
                     필수 기입란입니다!
                   </div>
                 </div>
+                <div class='purchase-guide'><p>아직 구매하지 않으셨다면?</p><a href=# target='_blank'>멤버십 구매하러 가기</a></div>
                 <!--
                 <p class='notice-header'>[아이디 및 비밀번호 설정 유의사항]</p>
                 <hr>
