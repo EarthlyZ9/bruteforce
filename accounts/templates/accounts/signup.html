@@ -43,6 +43,7 @@
                     필수 기입란입니다!
                   </div>
                 </div>
+                <!--
                 <p class='notice-header'>[아이디 및 비밀번호 설정 유의사항]</p>
                 <hr>
                 <ul class="notice-list">
@@ -52,7 +53,8 @@
                   <li>통상적으로 자주 사용되는 비밀번호는 사용할 수 없습니다.</li>
                   <li>숫자로만 이루어진 비밀번호는 사용할 수 없습니다.</li>
                 </ul>
-                <hr>    
+                <hr> 
+                -->
               {% elif forloop.counter == 13 %}
                 <p class="privacy-policy-header">[개인정보 수집 및 이용 동의]</p>
                 <div class='privacy-policy'>{{field.help_text | linebreaksbr}}</div>
