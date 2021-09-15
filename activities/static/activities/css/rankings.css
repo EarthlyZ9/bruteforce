@@ -21,17 +21,26 @@ body {
 .title_container {
   display: inline-block;
   text-align: center;
-  width:70%;
+  width:80%;
+  background-color: white;
+  border-radius: 20px;
+  height: 40px;
+  margin-bottom: 10px;
+  vertical-align: center;
+  padding: auto;
 
 }
 
 h1 {
   font-family: 'RixYeoljeongdo_Regular', sans-serif;
   font-size: 25px;
-  background-color: white;
-  border-radius: 20px;
+  margin-bottom: 0;
   line-height: 40px;
-  vertical-align: bottom;
+}
+
+h5 {
+  margin-bottom: 0;
+  line-height: 40px;
 }
 
 .d-flex {
@@ -47,14 +56,15 @@ h1 {
 }
 
 .header_img {
-  height: 90%;
+  width: 50%;
   display: block;
 }
 
 .course {
   margin-top: 15px;
+  margin-bottom: 15px;
   display: inline-block;
-  width: 30%;
+  width: 405px;
   text-align: center;
 }
 
@@ -62,7 +72,8 @@ h1 {
   display: inline-block;
   background-color: white;
   border-radius: 5px;
-  width: 60%;
+  width: 68%;
+  text-align: center;
 }
 
 

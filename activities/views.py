@@ -89,6 +89,7 @@ def load_feedbacks(request):
   return render(request, 'activities/feedbacks.html', {'fruit': fruit})
 
 #피드백 등록
+@login_required(login_url='accounts:login')
 def create_feedback(request, fruit_id):
   fruit = get_object_or_404(HtmlFruits, id=fruit_id)
   fruit.feedbacks_set.create(author=request.user, content=request.POST.get('content'), create_date=timezone.now())
@@ -164,7 +165,7 @@ def weekly_studies(request):
   user = request.user
   post_data = request.POST
   date_now = datetime.datetime.now()
-  week = Week.objects.filter(start_date__lte=date_now, end_date__gt=date_now).first()
+  week = Week.objects.filter(season=user.season, start_date__lte=date_now, end_date__gt=date_now).first()
   weekly_studies_inst = WeeklyStudies.objects.filter(user=user, week=week).first()
   if request.method=='POST':
     print(request.POST)

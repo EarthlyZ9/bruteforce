@@ -108,20 +108,3 @@ h6 {
   text-align: center;
 }
 
-.coding {
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  float: right;
-  margin-bottom: 20px;
-}
-
-@media (max-width: 767px) {
-  .coding {
-    display: inline-block;
-    float: none;
-    position: unset;
-    
-  }
-}
-

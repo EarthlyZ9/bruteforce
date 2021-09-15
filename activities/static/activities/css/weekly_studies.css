@@ -22,17 +22,19 @@ html, body {
   font-family: 'GongGothicLight', sans-serif;
   width: auto;
   margin: 15px 0 10px 0;
-  width: 15%;
+  width: fit-content;
   height: 65px;
   float: right;
+  padding: 5px 8px;
 }
 
 .week-num h1 {
   font-size: 50px;
   margin: auto;
-  line-height: 65px;
+  line-height: 55px;
   width: auto;
   display: inline-block;
+  vertical-align: middle;
 }
 
 .variable-num {
@@ -40,7 +42,7 @@ html, body {
   display: inline-block;
   font-size: 50px;
   margin: auto;
-  line-height: 65px;
+  line-height: 55px;
 }
 
 .step {
@@ -114,4 +116,21 @@ hr {
   border-bottom: 2px dashed #aaa;
   background-color: transparent;
   margin: 15px auto;
+}
+
+.guide {
+  display: inline-block;
+  margin-bottom: 10px;
+
+}
+.guide a {
+  display: inline-block;
+  font-size: 12px;
+}
+
+.guide p {
+  display: inline-block;
+  margin-right: 10px;
+  font-size: 12px;
+  margin-bottom: 0;
 }
