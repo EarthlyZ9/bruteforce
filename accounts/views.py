@@ -26,7 +26,7 @@ def profile(request):
   #주차 표시
   date_now = datetime.datetime.now()
   user_info = request.user
-  week_num = Week.objects.filter(season=user_info, start_date__lte=date_now, end_date__gte=date_now).first().week_num
+  week_num = Week.objects.filter(season=user_info.season, start_date__lte=date_now, end_date__gte=date_now).first().week_num
 
   if PointsStatus.objects.filter(user=request.user).first():
     print(PointsStatus.objects.filter(user=request.user).first())
