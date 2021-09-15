@@ -10,6 +10,7 @@ from django.contrib.auth.decorators import login_required
 @login_required(login_url='accounts:login')
 def points(request):
   if PointsStatus.objects.filter(user=request.user).first():
+    print(PointsStatus.objects.filter(user=request.user).first())
     user_points_status = PointsStatus.objects.filter(user=request.user).first()
     available_points = user_points_status.total_points - user_points_status.used_points
   else:

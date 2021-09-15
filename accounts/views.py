@@ -25,12 +25,19 @@ def profile(request):
 
   #주차 표시
   date_now = datetime.datetime.now()
-  week_num = Week.objects.filter(start_date__lte=date_now, end_date__gte=date_now).first().week_num
   user_info = request.user
-  user_points_status = PointsStatus.objects.filter(user=user_info).first()
-  available_points = user_points_status.total_points - user_points_status.used_points
+  week_num = Week.objects.filter(season=user_info, start_date__lte=date_now, end_date__gte=date_now).first().week_num
 
-  return render(request, 'accounts/profile.html', {'user_info': user_info, 'week_num':week_num, 'user_points_status':user_points_status, 'available_points':available_points})
+  if PointsStatus.objects.filter(user=request.user).first():
+    print(PointsStatus.objects.filter(user=request.user).first())
+    user_points_status = PointsStatus.objects.filter(user=request.user).first()
+    available_points = user_points_status.total_points - user_points_status.used_points
+    total_points = user_points_status.total_points 
+  else:
+    available_points = 0
+    total_points = 0
+
+  return render(request, 'accounts/profile.html', {'user_info': user_info, 'week_num':week_num, 'total_points':total_points, 'available_points':available_points})
 
 @login_required(login_url='accounts:login')
 def update_user_info(request):
