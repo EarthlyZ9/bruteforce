@@ -98,3 +98,4 @@ class UpdateInfoForm(forms.ModelForm):
 
 class ResetPasswordForm(forms.Form):
   email = forms.EmailField()
+

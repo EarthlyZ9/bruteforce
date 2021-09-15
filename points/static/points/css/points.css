@@ -106,3 +106,8 @@ footer {
   font-size: 13px;
 }
 
+.alert-dismissible .btn-close {
+  right: none;
+  left: 0;
+}
+

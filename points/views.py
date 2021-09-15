@@ -9,9 +9,12 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 @login_required(login_url='accounts:login')
 def points(request):
-  user_points_status = PointsStatus.objects.filter(user=request.user).first()
-  available_points = user_points_status.total_points - user_points_status.used_points
-  print(available_points)
+  if PointsStatus.objects.filter(user=request.user).first():
+    user_points_status = PointsStatus.objects.filter(user=request.user).first()
+    available_points = user_points_status.total_points - user_points_status.used_points
+  else:
+    available_points = 0
+
   if request.method == 'POST':
       selected_option = request.POST.get('option_select') #num
       selected_option_info = Points_purchase.objects.filter(num=selected_option).first()
@@ -22,6 +25,7 @@ def points(request):
         return redirect('points:points-page')
       else:
         PurchaseRequest.objects.create(user=request.user, purchase_option_id=selected_option)
+        messages.success(request, '성공적으로 신청되었습니다!')
         return redirect('points:points-page')
   else:
     context = dict()

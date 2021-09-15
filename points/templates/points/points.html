@@ -31,11 +31,19 @@
 
     <footer class="footer mt-auto py-1 fixed-bottom">
       {% if messages %}
-      {% for message in messages %}
-        <div class="alert alert-danger" role="alert">
-          {{message}}
-        </div>
-      {% endfor %}
+        {% for message in messages %}
+          {% if message.tags == 'error' %}
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              {{message}}
+            </div>
+          {% elif message.tags == 'success' %}
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              {{message}}
+            </div>
+          {% endif %}
+        {% endfor %}
       {% endif %} 
    
       <div class="container">
@@ -64,6 +72,5 @@
   {% endblock container %}
 
   {% block extrascript %}
-  <script src="{% static 'points/js/points.js' %}"></script>
   {% endblock %}
 </body>
