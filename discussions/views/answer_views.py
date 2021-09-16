@@ -26,9 +26,6 @@ def create_answer(request, question_id):
 @login_required(login_url='accounts:login')
 def modify_answer(request, answer_id):
   answer = get_object_or_404(Answer, id=answer_id)
-  if request.user != answer.author:
-    messages.error(request, '수정권한이 없습니다 :(')
-    return redirect('discussions:detail', question_id=answer.question.id)
 
   if request.method == "POST":
     form = AnswerForm(request.POST, instance=answer)
@@ -46,10 +43,6 @@ def modify_answer(request, answer_id):
 
 @login_required(login_url='accounts:login')
 def delete_answer(request, answer_id):
-  
-    answer = get_object_or_404(Answer, pk=answer_id)
-    if request.user != answer.author:
-        messages.error(request, '삭제권한이 없습니다')
-    else:
-        answer.delete()
-    return redirect('discussions:detail', question_id=answer.question.id)
+  answer = get_object_or_404(Answer, pk=answer_id)
+  answer.delete()
+  return redirect('discussions:detail', question_id=answer.question.id)

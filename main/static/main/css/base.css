@@ -142,6 +142,11 @@ body {
   font-size: 30px;
 }
 
+@media (max-width: 767px) {
+  .float-contact p {
+    font-size: 10px;
+  }
+}
 
 
 

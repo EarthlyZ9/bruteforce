@@ -97,10 +97,10 @@ class UpdateInfoForm(forms.ModelForm):
     }
 
 class ResetPasswordForm(forms.Form):
-  email = forms.EmailField()
+  email = forms.EmailField(widget=forms.EmailInput(attrs={'class': 'form-control'}), label='이메일 주소')
 
 class FindIdForm(forms.Form):
-  name = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'class': 'form-control'}))
+  name = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'class': 'form-control'}), label='성명')
   mobile_num = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}), validators=[
         RegexValidator(
             regex='^[0-9]{11}$',
@@ -109,4 +109,4 @@ class FindIdForm(forms.Form):
         )
       ],
       label='휴대폰 번호')
-  email = forms.EmailField(widget=forms.EmailInput(attrs={'class': 'form-control'}))
+  email = forms.EmailField(widget=forms.EmailInput(attrs={'class': 'form-control'}), label='이메일 주소')

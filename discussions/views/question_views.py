@@ -22,9 +22,6 @@ def create_question(request):
 @login_required(login_url='accounts:login')
 def modify_question(request, question_id):
   question = get_object_or_404(Question, id=question_id)
-  if request.user != question.author:
-      messages.error(request, '수정 권한이 없습니다 :(')
-      return redirect('discussions:detail', question_id=question.id)
 
   if request.method == "POST":
       form = QuestionForm(request.POST, instance=question)
@@ -42,9 +39,6 @@ def modify_question(request, question_id):
 
 @login_required(login_url='accounts:login')
 def delete_question(request, question_id):
-    question = get_object_or_404(Question, id=question_id)
-    if request.user != question.author:
-        messages.error(request, '삭제 권한이 없습니다 :(')
-        return redirect('discussions:detail', question_id=question.id)
-    question.delete()
-    return redirect('discussions:question-list')
+  question = get_object_or_404(Question, id=question_id)
+  question.delete()
+  return redirect('discussions:question-list')

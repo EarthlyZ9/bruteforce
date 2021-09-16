@@ -3,9 +3,11 @@ const spinnerHTML = '<div class="spinner-border m-3" role="status"> \
 </div>';
 
 const emailForm = document.getElementById('form');
+const submitBtn = document.getElementById('submit-btn');
 
 
 emailForm.onsubmit = function() {
-  console.log('ㅇㅇ')
+  document.body.style.cursor = "progress";
+  submitBtn.style.cursor = "progress";
   document.getElementById('spinner_div').innerHTML = spinnerHTML
 }

@@ -7,15 +7,6 @@
 </head>
   {% block container %}
     <div class="container my-3" id='container'>
-    <!--필요없는거 같은데?-->
-    {% if messages %}
-    <div class="alert alert-danger my-3" role="alert">
-    {% for message in messages %}
-        <strong>{{ message.tags }}</strong>
-        <ul><li>{{ message.message }}</li></ul>
-    {% endfor %}
-    {% endif %}
-    <!--웅그치-->
       <div class='container header'>
         <div class='d-flex justify-content-between'>
           <p class='category'>{{question.get_category_display}}</p>
