@@ -21,14 +21,6 @@ h1 {
   text-align: left;
 }
 
-#input-email p {
-  width: 90%;
-}
-
-#id_email {
-  width: 80%;
-}
-
 .btn-primary:hover {
   background-color: #FEB900;
   color: black;
@@ -58,6 +50,15 @@ h1 {
 .alert {
   margin-top: 15px;
   font-size: 15px;
+}
+
+#form p {
+  text-align: left;
+}
+
+.alert-dismissible .btn-close {
+  right: none;
+  left: 0;
 }
 
 .alert-dismissible {

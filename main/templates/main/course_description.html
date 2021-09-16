@@ -2,10 +2,43 @@
 <head>
   {% load static %}
   {% block extrahead %}
+  <link href={% static 'main/css/course_description.css' %} rel="stylesheet" />
   {% endblock extrahead %}
 </head>
 <body>
   {% block container %}
-  <h1>course description</h1>
+  <div id="python">
+    <img src={% static 'main/images/course_description_python.png' %}>
+  </div>
+
+  <div class="float-course">
+    <div class='contents'>
+      <ul>
+        <li class="course python" style="margin-bottom: 15px;">
+          <a href="#python">
+            <p>파이썬</p>
+            <p>코스 알아보기 ></p>
+          </a>
+        </li>
+        <li class="course datascience" style="margin-bottom: 15px;">
+          <a href="/instagram">
+            <p>데이터 사이언스</p>
+            <p>코스 알아보기 ></p>
+          </a>
+        </li>
+        <li class="course htmlcss">
+          <a href='/kakao_plus'>
+            <p>웹 퍼블리싱</p>
+            <p>코스 알아보기 ></p>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <img src="{% static 'main/images/course_float_balloon.png' %}" style='width:inherit;'>
+  </div>
+
+  
+  
+
   {% endblock container %}
 </body>

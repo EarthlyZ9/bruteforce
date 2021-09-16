@@ -5,7 +5,7 @@ from django.shortcuts import render, redirect
 from accounts.forms import UpdateInfoForm, UserForm, ResetPasswordForm
 from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
-from .forms import PasswordChangeCustomForm
+from .forms import FindIdForm, PasswordChangeCustomForm
 from django.contrib.auth import update_session_auth_hash
 from adminpage.models import PointsStatus
 from accounts.models import Account_Info
@@ -107,6 +107,36 @@ def purchase_records(request):
 
 
   return render(request, 'accounts/purchase_records.html', {'purchase_records':purchase_records, 'user_points_status':user_points_status})
+
+def find_id(request):
+  if request.method == 'POST':
+    form = FindIdForm(request.POST)
+    user_name = request.POST.get('name')
+    user_mobile_num = request.POST.get('mobile_num')
+    user_email = request.POST.get('email')
+    if form.is_valid():
+      if Account_Info.objects.filter(name=user_name): #등록된 사용자 이름이면!
+        user_info = Account_Info.objects.filter(name=user_name).first()
+        if user_info.mobile_num == user_mobile_num and user_info.email == user_email: #등록된 이름의 휴대폰 번호와 이메일이 일치하면
+          user_id = user_info.username
+          return render(request, 'accounts/find_id_complete.html', {'name':user_name, 'user_id':user_id})
+        elif user_info.mobile_num == user_mobile_num and user_info.email != user_email:
+          messages.error(request, '사용자 이메일이 일치하지 않네요 :(')
+        elif user_info.mobile_num != user_mobile_num and user_info.email == user_email:
+          messages.error(request, '사용자 휴대폰 번호가 일치하지 않네요 :(')
+        else:
+          messages.error(request, '사용자 휴대폰 번호와 이메일이 일치하지 않네요 :(')
+      else:
+        messages.error(request, '등록되지 않은 사용자입니다.')
+
+    else:
+      print(form.errors)
+  else: #get method
+    form = FindIdForm()
+    
+  context = {'form': form, }
+  return render(request, 'accounts/find_id_form.html', context)
+
 
 
 def reset_password(request):

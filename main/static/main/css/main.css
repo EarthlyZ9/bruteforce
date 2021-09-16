@@ -1,11 +1,8 @@
-body {
-  height: 100vh;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
+html, body {
+  width: 100%;
 }
 
-h1 {
-  color: red;
-  text-decoration: underline;
+#main {
+  width: 100%;
+  text-align: center;
 }

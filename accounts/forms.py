@@ -99,3 +99,14 @@ class UpdateInfoForm(forms.ModelForm):
 class ResetPasswordForm(forms.Form):
   email = forms.EmailField()
 
+class FindIdForm(forms.Form):
+  name = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'class': 'form-control'}))
+  mobile_num = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}), validators=[
+        RegexValidator(
+            regex='^[0-9]{11}$',
+            message='전화번호는 11자이어야 합니다',
+            code='mobile_num_invalid',
+        )
+      ],
+      label='휴대폰 번호')
+  email = forms.EmailField(widget=forms.EmailInput(attrs={'class': 'form-control'}))

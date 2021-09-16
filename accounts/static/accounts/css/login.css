@@ -102,9 +102,20 @@ h6 {
   width: 400px;
 }
 
+.forgot {
+  display: inline-block;
+}
+
 #forgot-password {
   font-size: 15px;
   color: rgb(35,35,35);
   text-align: center;
+  display: inline-block;
 }
 
+#forgot-id {
+  font-size: 15px;
+  color: rgb(35,35,35);
+  text-align: center;
+  display: inline-block;
+}
