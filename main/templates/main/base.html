@@ -36,7 +36,6 @@
               <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
                 <li><a class="dropdown-item" href={% url 'main:about-us' %}>BF 소개</a></li>
                 <li><a class="dropdown-item" href={% url 'main:course-description' %}>코스 소개</a></li>
-                <li><a class="dropdown-item" href={% url 'main:program-description' %}>프로그램 소개</a></li>
               </ul>
             </li>
             <li class="nav-item dropdown">
@@ -44,6 +43,7 @@
                 학습하기
               </a>
               <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href={% url 'main:program-description' %}>학습 시작하기</a></li>
                 <li><a class="dropdown-item" href="{% url 'activities:weekly-studies' %}">학습 인증</a></li>
                 <li><a class="dropdown-item" href="{% url 'activities:htmlcss-fruits' %}">작품 보기</a></li>
                 <li><a class="dropdown-item" href="{% url 'discussions:question-list' %}">토의 하기</a></li>
