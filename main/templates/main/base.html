@@ -38,20 +38,27 @@
                 <li><a class="dropdown-item" href={% url 'main:course-description' %}>코스 소개</a></li>
               </ul>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href={% url 'main:program-description' %}>학습 시작하기</a>
+            </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 학습하기
               </a>
               <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href={% url 'main:program-description' %}>학습 시작하기</a></li>
                 <li><a class="dropdown-item" href="{% url 'activities:weekly-studies' %}">학습 인증</a></li>
-                <li><a class="dropdown-item" href="{% url 'activities:htmlcss-fruits' %}">작품 보기</a></li>
-                <li><a class="dropdown-item" href="{% url 'discussions:question-list' %}">토의 하기</a></li>
                 <li><a class="dropdown-item" href="{% url 'activities:material-list' %}">학습 자료실</a></li>
+                <li><a class="dropdown-item" href="{% url 'activities:rankings' %}">랭킹</a></li>
               </ul>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href={% url 'activities:rankings' %}>랭킹</a>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                커뮤니티
+              </a>
+              <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="{% url 'activities:htmlcss-fruits' %}">작품 보기</a></li>
+                <li><a class="dropdown-item" href="{% url 'discussions:question-list' %}">토의 하기</a></li>
+              </ul>
             </li>
             <li class="nav-item">
               <a class="nav-link" href={% url 'points:points-page' %}>학습포인트</a>
@@ -63,6 +70,7 @@
               <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
                 <li><a class="dropdown-item" href={% url 'accounts:profile' %}>내 프로필</a></li>
                 <li><a class="dropdown-item" href="{% url 'activities:study-log' %}">내 학습 기록</a></li>
+                <li><a class="dropdown-item" href="#">신청하기</a></li>
                 {% if user.is_authenticated %}
                 <li><a class="dropdown-item" href="{% url 'accounts:logout' %}" id="logout-btn">로그아웃</a></li>
                 {% else %}

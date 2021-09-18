@@ -18,6 +18,9 @@ def points(request):
 
   if request.method == 'POST':
       selected_option = request.POST.get('option_select') #num
+      if selected_option is None:
+        messages.error(request, '옵션을 선택해주세요.')
+        return redirect('points:points-page')
       selected_option_info = Points_purchase.objects.filter(num=selected_option).first()
       print(selected_option_info.price)
       if available_points < selected_option_info.price:

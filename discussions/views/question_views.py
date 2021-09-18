@@ -11,6 +11,7 @@ def create_question(request):
         form = QuestionForm(request.POST)
         if form.is_valid():
             question = form.save(commit=False)
+            question.author = request.user
             question.create_date = timezone.now()
             question.save()
             return redirect('discussions:question-list')

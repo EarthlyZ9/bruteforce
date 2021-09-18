@@ -63,14 +63,12 @@
                 <option value={{product.num}}>{{product.name}}</option>
                 {% endfor %}
               </select>
-              <button class="btn btn-outline-secondary" id='request_btn' type="submit">신청하기</button>
+              <button class="btn btn-outline-secondary" id='request_btn' type="submit" onclick="check()">신청하기</button>
             </div>
           </form>
       </div>
     </footer>
 
   {% endblock container %}
-  <script src="{% static 'points/js/points.js' %}"></script>
-  {% block extrascript %}
   {% endblock %}
 </body>
