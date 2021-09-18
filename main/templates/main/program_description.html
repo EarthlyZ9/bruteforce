@@ -2,11 +2,41 @@
 <head>
   {% load static %}
   {% block extrahead %}
-  <link href={% static 'activities/css/program_description.css' %} rel="stylesheet" />
+  <link href={% static 'main/css/program_description.css' %} rel="stylesheet" />
   {% endblock extrahead %}
 </head>
 
 <body>
   {% block container %}
+    <div class='d-flex justify-content-center align-items-center'>
+      <div class="container py-3 px-3">
+        <h1>학습을 시작해볼까요?</h1>
+        <div class="guide">
+          <p>아직 멤버십을 구매하지 않으셨다면?</p>
+          <a target="_blank" href="#">멤버십 구매하고 학습 시작하기</a>
+        </div>
+        <div class="course python">
+          <div class='d-flex flex-column justify-content-center align-items-center' style="height:100%;">
+            <img src="{% static 'main/images/python_icon.png' %}" style="width:45%;">
+            <h5>프로그래밍 기초 in Python</h5>
+            <a class="btn btn-primary start-btn" type="button" href="{% url 'main:python-description' %}">학습 시작하기</a>
+          </div>
+        </div>
+        <div class="course ds">
+          <div class='d-flex flex-column justify-content-center align-items-center' style="height:100%;">
+            <img src="{% static 'main/images/ds_icon.png' %}" style="width:45%;">
+            <h5>데이터 사이언스 입문</h5>
+            <a class="btn btn-primary start-btn" type="button" href="{% url 'main:ds-description' %}">학습 시작하기</a>
+          </div>
+        </div>
+        <div class="course htmlcss">
+          <div class='d-flex flex-column justify-content-center align-items-center' style="height:100%;">
+            <img src="{% static 'main/images/html_icon.png' %}" style="width:45%;">
+            <h5>웹 퍼블리싱 with HTML/CSS</h5>
+            <a class="btn btn-primary start-btn" type="button" href="{% url 'main:htmlcss-description' %}">학습 시작하기</a>
+          </div>
+        </div>
+      </div>
+    </div>
   {% endblock %}
 </body>

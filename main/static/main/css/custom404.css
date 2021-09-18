@@ -2,11 +2,30 @@ html, body {
   height: 100%;
 }
 
-
-#gradient_background {
-  background: linear-gradient( to right, #FEB900, rgb(251, 146, 52) );
+.d-flex {
   height: 100%;
+  text-align: center;
+}
+
+.container {
+  background: linear-gradient( to right, #FEB900, rgb(251, 146, 52) );
   border-radius: 20px;
   border: 2px solid rgb(217,118,54);
   text-align: center;
+  height: 90%;
 }
+
+.element {
+  width: 70%;
+  
+
+}
+
+.container a {
+  display: block;
+}
+
+.back-btn {
+  width: 25%;
+}
+

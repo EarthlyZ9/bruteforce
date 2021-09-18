@@ -1,0 +1,30 @@
+h1, h2 {
+  margin-top: 15px;
+}
+
+.highlight {
+  background-color: #FEB900;
+  color: black;
+  height: fit-content;
+  width: fit-content;
+  border-radius: 5px;
+  padding: 3px 5px;
+
+}
+
+.strong {
+  background-color: #FEB900;
+  color: black;
+  height: fit-content;
+  width: fit-content;
+  border-radius: 2px;
+  padding: 2px 3px;
+  margin-right: 3px;
+}
+
+.percent {
+  display: inline-block;
+  font-size: 30px;
+}
+
+

@@ -1,0 +1,36 @@
+{% extends './base.html' %}
+<head>
+  {% load static %}
+  {% block extrahead %}
+  <link href={% static 'main/css/python_description.css' %} rel="stylesheet" />
+  {% endblock extrahead %}
+</head>
+<body>
+  {% block container %}
+  <div class="container">
+    <h1>프로그래밍 기초 in Python</h1>
+    <p>수강생 여러분, 환영합니다!<br>
+    앞으로 3개월 동안 브루트포스와 함께 코딩 공부를 하게 될 텐데요, 3개월 동안 어떤 방식으로 학습이 진행될 지 미리 파악해두면 좋겠죠?</p>
+    <div class="highlight">본격적인 학습 진행에 앞서, 아래 가이드를 꼭 읽어보세요 :)</div>
+    <hr>
+
+    <h2>브폴 소개</h2>
+    <p>저희 <strong class="strong">브폴</strong>은 대학생들에게 코딩에 대한 진입장벽을 낮추고, 양질의 교육을 제공하기 위해 만들어졌어요.<br>
+    '브폴'은 Brute Force의 줄임말이에요. 조금은 생소하시겠지만, '무차별 대입'이라는 뜻을 가진 알고리즘 패러다임 중 하나랍니다!<br>
+    Brute Force 알고리즘과 같이, 요령을 찾기보다는 다양한 시도를 통해 경험을 쌓는 초심자의 마음을 담아 브폴이 탄생했어요.</p>
+    <div class="percent">4%</p></div>
+    <p>인터넷 강의 수강 인원을 100명이라고 했을 때, 단 4명만이 3개월 뒤 강의를 수료한다고 해요.<br>
+    대학생 맞춤형 커리큘럼과 관리를 통해 코딩을 온라인으로 학습할 수 있는 최적의 환경을 조성하는 것이 브폴의 목표에요.</p>
+
+    <a href="{% url 'main:about-us' %}" target="_blank"><i class="fas fa-hand-point-right"></i> 브루트포스에 대한 더 자세한 소개를 보려면 여기를 클릭!</a>
+    <hr>
+
+    <h2>코스 소개</h2>
+    <p><strong class="strong">프로그래밍 기초 in Python</strong> 은 누적 수강생이 가장 많은, 인기있는 코스에요. 그만큼 사용 범위가 넓고, 범용화된 프로그래밍 언어라는거겠죠?<br>
+    해당 코스는 프로그램을 설치하는 기초적인 과정부터 실습 문제 풀이와 간단한 프로그램 설계 및 구현까지의 과정을 포함하고 있어요.<br>
+    자세한 커리큘럼은 하단의 사진을 참고해주세요 (●'◡'●)</p>
+
+
+  </div>
+  {% endblock %}
+</body>

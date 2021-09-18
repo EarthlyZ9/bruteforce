@@ -85,3 +85,9 @@ h5 {
 .single_row {
   width: 90%;
 }
+
+@media (max-width: 1125px) {
+  .course {
+    display: block;
+  }
+}

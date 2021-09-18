@@ -162,6 +162,21 @@ input::placeholder {
   background-color: #FEB900;
 }
 
+.btn-primary:focus {
+  background-color: rgb(35,35,35);
+  border-color: rgb(35,35,35);
+  color: white;
+  box-shadow: 0 0 0 0.25rem rgb(35 35 35 / 50%);
+}
+.btn-primary:active:focus {
+  box-shadow: 0 0 0 0.25rem rgb(35 35 35 / 50%);
+}
+.btn-primary:active {
+  background-color: rgb(35,35,35);
+  border-color: rgb(35,35,35);
+  color: white;
+}
+
 h6 {
   margin-top: 2px;
   margin-bottom: 2px;

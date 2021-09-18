@@ -1,6 +1,12 @@
 {% extends 'main/base.html' %}
-{% load static %}
+<head>
+  {% load static %}
+  {% block extrahead %}
+  <link href={% static 'main/css/admin_page.css' %} rel="stylesheet" />
+  {% endblock extrahead %}
+</head>
 
+<body>
 {% block container %}
 
 <h1>어드민 페이지</h1>
@@ -13,5 +19,16 @@
 <a type='button' class='btn btn-primary' href="{% url 'admin-page:ds-points' %}">데이터 사이언스 수강생 학습포인트 확인 [집계하기]</a>
 <a type='button' class='btn btn-primary' href="{% url 'admin-page:htmlcss-points' %}">웹 퍼블리싱 수강생 학습포인트 확인 [집계하기]</a>
 
+<h2>진도율 집계하기</h2>
+<p style="color:red;">2, 4, 6, 8주차의 경우, 진도율 집계 후 학습 포인트 확인</p>
+<form method="post" id="input_progress_file" class="row align-items-center" action="{% url 'adminpage:admin-page' %}">
+  {% csrf_token %}
+  <div class="input-group">
+    <input type="file" class="form-control" id="inputFile" aria-describedby="inputGroupFileAddon" aria-label="Upload">
+    <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon">업로드</button>
+  </div>
+</form>
+
 
 {% endblock container %}
+</body>

@@ -1,0 +1,77 @@
+html, body {
+  height: 100%;
+}
+
+
+.d-flex {
+  height: calc(100% - 60px);
+}
+
+.container {
+  width: 85%;
+  padding: 0;
+  text-align: center;
+  display: inline-block;
+  border: 0.2px solid rgb(223,226,229);
+  border-radius: 20px;
+}
+
+h1 {
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+
+.guide {
+  text-align: right;
+  font-size: 15px;
+}
+
+.guide p, .guide a {
+  display: inline-block;
+}
+
+.course {
+  display: inline-block;
+  width: 300px;
+  box-shadow: 10px 10px 10px #aaa;
+  border: 0.1px solid rgb(223,226,229);
+  border-radius: 20px;
+  height: 250px;
+  margin: 15px 10px;
+  padding: 15px 10px;
+}
+
+.course img {
+  margin-bottom: 15px;
+}
+
+.course h5 {
+  margin-bottom: 8px;
+}
+
+.btn-primary:focus {
+  background-color: rgb(35,35,35);
+  border-color: rgb(35,35,35);
+  color: white;
+  box-shadow: 0 0 0 0.25rem rgb(35 35 35 / 50%);
+}
+.btn-primary:active:focus {
+  box-shadow: 0 0 0 0.25rem rgb(35 35 35 / 50%);
+}
+.btn-primary:active {
+  background-color: rgb(35,35,35);
+  border-color: rgb(35,35,35);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #FEB900;
+  color: black;
+}
+
+.btn-primary {
+  background-color: rgb(35,35,35);
+  color: white;
+  border: 0;
+}
+

@@ -36,3 +36,23 @@ class PointsStatus(models.Model):
 
   def __str__(self):
     return str(self.user)
+
+
+def make_file_path(instance, filename):
+  path = 'progress_studies/{season}/{filename}'.format(
+    season=instance.week.season,
+    filename=filename,
+  )
+  return path
+
+class ProgressPointsFile(models.Model):
+  PERIOD_CHOICES = (
+    ('1', '1차 진도율'),
+    ('2', '2차 진도율'),
+    ('3', '3차 진도율'),
+    ('final', '최종 진도율'),
+    ('completion', '종료 시점 진도율 (수료증)'),
+  )
+  period = models.CharField(max_length=20, choices=PERIOD_CHOICES)
+  file = models.FileField(upload_to=make_file_path)
+  

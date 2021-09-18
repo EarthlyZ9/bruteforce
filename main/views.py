@@ -16,6 +16,18 @@ def course_description(request):
 def program_description(request):
   return render(request, 'main/program_description.html')
 
+@login_required(login_url='accounts:login')
+def python_description(request):
+  return render(request, 'main/python_description.html')
+
+@login_required(login_url='accounts:login')
+def ds_description(request):
+  return render(request, 'main/ds_description.html')
+
+@login_required(login_url='accounts:login')
+def htmlcss_description(request):
+  return render(request, 'main/htmlcss_description.html')
+
 
 def instagram(request):
   return redirect("https://instagram.com/bruteforce_univ?utm_medium=copy_link")
