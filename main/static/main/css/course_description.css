@@ -51,7 +51,7 @@ html, body {
 }
 
 .contents p {
-  font-size: 15px;
+  font-size: 12px;
   margin-bottom: 0;
 }
 
@@ -59,7 +59,7 @@ html, body {
   list-style: none;
   text-align: center;
   border-radius: 20px;
-  padding: 15px;
+  padding: 10px;
   box-shadow: 8px 10px 10px 1px rgb(200, 196, 194);
 }
 
@@ -70,7 +70,7 @@ html, body {
 }
 
 .contents ul {
-  padding: 10px;
+  padding: 5px;
   margin-bottom: 0;
 }
 
