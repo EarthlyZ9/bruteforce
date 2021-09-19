@@ -7,37 +7,23 @@
 </head>
 <body>
   {% block container %}
-  <div id="main">
-    <img src="{% static 'main/images/main_mockup.png' %}" style="width: 100%;">
+  <div class="float-register">
+    <a href="https://smartstore.naver.com/bruteforceuniv2020/products/5872363153", target="_blank" type="button">지금 바로 신청하기 >>></a>
   </div>
-  
-  <!--
-  <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-indicators">
-      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-    </div>
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="" class="d-block w-100" alt="...">
-      </div>
-      <div class="carousel-item">
-        <img src="..." class="d-block w-100" alt="...">
-      </div>
-      <div class="carousel-item">
-        <img src="..." class="d-block w-100" alt="...">
-      </div>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
+
+  <div id="main_1" style="width:100%;">
+    <img src="{% static 'main/images/main_1.png' %}" style="width: 100%;">
   </div>
-  -->
+  <div id="course-list" style="width:100%">
+    <img src="{% static 'main/images/main_2.png' %}" style="width:100%">
+    <a href="{% url 'main:python-description' %}" type="button"><img class="course-button python" src="{% static 'main/images/main_2_button.png' %}"></a>
+    <a href="{% url 'main:ds-description' %}" type="button"><img class="course-button ds" src="{% static 'main/images/main_2_button.png' %}"></a>
+    <a href="{% url 'main:htmlcss-description' %}" type="button"><img class="course-button htmlcss" src="{% static 'main/images/main_2_button.png' %}"></a>
+  </div>
+  <div id="main_3" style="width:100%;">
+    <img src="{% static 'main/images/main_3.png' %}" style="width: 100%;">
+  </div>
+
+
   {% endblock container %}
 </body>

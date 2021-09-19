@@ -7,8 +7,35 @@
 </head>
 <body>
   {% block container %}
+  <div class="float-register">    
+    <a href="https://smartstore.naver.com/bruteforceuniv2020/products/5872363153", target="_blank" type="button">지금 바로 신청하기 >>></a>
+  </div>
+
   <div id="python">
-    <img src={% static 'main/images/course_description_python.png' %}>
+    <img src="{% static 'main/images/python_course_description.png' %}" style="width:100%;">
+    <div class="python-register">
+      <img src="{% static 'main/images/go_register_python.png' %}" style="width: 40%;"> 
+      <a href="https://smartstore.naver.com/bruteforceuniv2020/products/5872363153", target="_blank"><img class="register-button" src="{% static 'main/images/register_button.png' %}"></a>
+    </div>
+    <img src="{% static 'main/images/course_others.png' %}" style="width: 70%; margin-top: 40px;">
+  </div>
+
+  <div id="ds">
+    <img src="{% static 'main/images/ds_course_description.png' %}" style="width:100%;">
+    <div class="ds-register">
+      <img src="{% static 'main/images/go_register_ds.png' %}" style="width: 40%; margin-top: 27px;"> 
+      <a href="https://smartstore.naver.com/bruteforceuniv2020/products/5872363153", target="_blank"><img class="register-button" src="{% static 'main/images/register_button.png' %}"></a>
+    </div>
+    <img src="{% static 'main/images/course_others.png' %}" style="width: 70%; margin-top: 40px;">
+  </div>
+
+  <div id="htmlcss">
+    <img src="{% static 'main/images/htmlcss_course_description.png' %}" style="width:100%;">
+    <div class="htmlcss-register">
+      <img src="{% static 'main/images/go_register_htmlcss.png' %}" style="width: 40%;"> 
+      <a href="https://smartstore.naver.com/bruteforceuniv2020/products/5872363153", target="_blank"><img class="register-button" src="{% static 'main/images/register_button.png' %}"></a>
+    </div>
+    <img src="{% static 'main/images/course_others.png' %}" style="width: 70%; margin-top: 40px;">
   </div>
 
   <div class="float-course">
@@ -21,13 +48,13 @@
           </a>
         </li>
         <li class="course datascience" style="margin-bottom: 15px;">
-          <a href="/instagram">
+          <a href="#ds">
             <p>데이터 사이언스</p>
             <p>코스 알아보기 ></p>
           </a>
         </li>
         <li class="course htmlcss">
-          <a href='/kakao_plus'>
+          <a href='#htmlcss'>
             <p>웹 퍼블리싱</p>
             <p>코스 알아보기 ></p>
           </a>

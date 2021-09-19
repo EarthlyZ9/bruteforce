@@ -2,7 +2,54 @@ html, body {
   width: 100%;
 }
 
-#main {
-  width: 100%;
+#main_1 {
   text-align: center;
+}
+
+#main_3 {
+  text-align: center;
+}
+
+#course-list {
+  text-align: center;
+  position: relative;
+}
+
+.course-button {
+  position: absolute;
+  top: 64%;
+  width: 20%;
+}
+
+.python {
+  left: 12.3%;
+}
+
+.ds {
+  left: 40%;
+}
+.htmlcss {
+  left: 67.6%;
+}
+
+.course-button img {
+  width: 60% !important;
+}
+
+.float-register {
+  background-color: rgb(35,35,35);
+  border-radius: 15px;
+  float: right;
+  color: white;
+  text-align: center;
+  margin-right: 20px;
+  margin-top: 20px;
+  z-index: 2000;
+}
+
+.float-register a {
+  text-decoration: none;
+  color: white;
+  font-size: 25px;
+  padding: 5px 10px;
 }

@@ -9,6 +9,24 @@ html, body {
   width: 100%;
 }
 
+.float-register {
+  background-color: rgb(35,35,35);
+  border-radius: 15px;
+  float: right;
+  color: white;
+  text-align: center;
+  margin-right: 20px;
+  margin-top: 20px;
+  z-index: 2000;
+}
+
+.float-register a {
+  text-decoration: none;
+  color: white;
+  font-size: 25px;
+  padding: 5px 10px;
+}
+
 
 .float-course {
   float: right;
@@ -33,7 +51,7 @@ html, body {
 }
 
 .contents p {
-  font-size: 18px;
+  font-size: 15px;
   margin-bottom: 0;
 }
 
@@ -41,7 +59,7 @@ html, body {
   list-style: none;
   text-align: center;
   border-radius: 20px;
-  padding: 20px;
+  padding: 15px;
   box-shadow: 8px 10px 10px 1px rgb(200, 196, 194);
 }
 
@@ -66,11 +84,19 @@ html, body {
   border-radius: 10px;
 }
 
-#python {
+#python, #ds, #htmlcss {
   width: 100%;
   text-align: center;
 }
 
-#python img {
-  width: 100%;
+.python-register, .ds-register, .htmlcss-register {
+  position: relative;
+  text-align: center;
+}
+
+.register-button {
+  position: absolute;
+  top: 65%;
+  left: 35%;
+  width: 30%;
 }
