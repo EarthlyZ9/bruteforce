@@ -10,7 +10,7 @@
   <div class="d-flex align-items-center" style="height:calc(100% - 60px);">
     <div class="container">
       <a name="name"></a>
-      <h4>Brute Force 프로그램 신청하기</h4>
+      <h4>브루트포스 회원가입하기</h4>
       <form method="POST" class="post-form needs-validation" action="{% url 'accounts:signup' %}" id="signup_form" onsubmit="complete()">
         {% csrf_token %}
         {% include "accounts/signup_form_error.html" %}

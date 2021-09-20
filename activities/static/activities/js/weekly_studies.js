@@ -1,3 +1,10 @@
+loginButton.addEventListener("click", onLoginBtnClick);
+
+var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+  return new bootstrap.Tooltip(tooltipTriggerEl)
+})
+
 //글자 수세기 
 function checkLength(obj){
   const minLength = 50; //최소 200바이트 (100자)
@@ -31,3 +38,4 @@ function validate() {
   }
   return false
 }
+
