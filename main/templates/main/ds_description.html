@@ -1,0 +1,67 @@
+{% extends './base.html' %}
+<head>
+  {% load static %}
+  {% block extrahead %}
+  <link href={% static 'main/css/ds_description.css' %} rel="stylesheet" />
+  {% endblock extrahead %}
+</head>
+<body>
+  {% block container %}
+  <div class="container my-3">
+    <h1>데이터 사이언스 입문</h1>
+    <p>수강생 여러분, 환영합니다!<br>
+    앞으로 3개월 동안 브루트포스와 함께 코딩 공부를 하게 될 텐데요, 3개월 동안 어떤 방식으로 학습이 진행될 지 미리 파악해두면 좋겠죠?</p>
+    <div class="highlight">본격적인 학습 진행에 앞서, 아래 가이드를 꼭 읽어보세요 :)</div>
+    <hr>
+
+    <h2>브폴 소개</h2>
+    <p>저희 <strong class="strong">브폴</strong>은 대학생들에게 코딩에 대한 진입장벽을 낮추고, 양질의 교육을 제공하기 위해 만들어졌어요.<br>
+    '브폴'은 Brute Force의 줄임말이에요. 조금은 생소하시겠지만, '무차별 대입'이라는 뜻을 가진 알고리즘 패러다임 중 하나랍니다!<br>
+    Brute Force 알고리즘과 같이, 요령을 찾기보다는 다양한 시도를 통해 경험을 쌓는 초심자의 마음을 담아 브폴이 탄생했어요.</p>
+    <div class="percent">4%</p></div>
+    <p>인터넷 강의 수강 인원을 100명이라고 했을 때, 단 4명만이 3개월 뒤 강의를 수료한다고 해요.<br>
+    대학생 맞춤형 커리큘럼과 관리를 통해 코딩을 온라인으로 학습할 수 있는 최적의 환경을 조성하는 것이 브폴의 목표에요.</p>
+
+    <a href="{% url 'main:about-us' %}" target="_blank"><i class="fas fa-hand-point-right"></i> 브루트포스에 대한 더 자세한 소개를 보려면 여기를 클릭!</a>
+    <hr>
+
+    <h2>코스 소개</h2>
+    <p><strong class="strong">데이터 사이언스 입문</strong> 가장 다양한 직무와 맞닿아 있는, 활용도가 높은 코스에요.<br> 
+    그만큼 다양한 관심사의 학생들이 선택하는 코스랍니다. 자세한 커리큘럼은 하단의 사진을 참고해주세요 (●'◡'●) </p>
+    <img src="{% static 'main/images/ds_curriculum_7.jpg' %}" style="width:100%;">
+    <hr>
+
+    <h2>프로그램 진행 방식</h2>
+    <p>프로그램이 진행되는 방식을 안내해드릴게요.<br>
+    아래와 같이, 매주 3가지 활동을 진행하시면 돼요.</p>
+    <ul>
+      <li>강의 수강</li>
+      <li>출석</li>
+      <li>주차별 학습 활동</li>
+    </ul>
+    <hr style="border-top: 1px dashed;">
+
+    <div class="container">
+      <h3>1. 강의 수강</h3>
+      <p>해당 주차의 강의를 커리큘럼에 맞추어 수강하기!</p>
+      <hr style="border-top: 1px dashed;">
+      <h3>2. 출석</h3>
+      <hr style="border-top: 1px dashed;">
+      <h3>3. 주차별 학습 활동 - 인사이트 보고서 작성하기</h3>
+    </div>
+    
+    <hr>
+    <h2>브폴 포인트 제도</h2>
+    <p>브폴에는 브폴만의 학습 포인트 제도인, '밥풀' 이 있어요. 다양한 방식으로 밥풀을 적립할 수 있고, 또 사용할 수 있답니다.</p>
+    <a href="{% url 'points:points-info' %}" target="_blank"><i class="fas fa-hand-point-right"></i> 브루트포스의 학습 포인트 제도에 대한 더 자세한 소개를 보려면 여기를 클릭!</a>
+    <hr>
+
+    <h2>수료증 발급</h2>
+    <p>프로그램 종료일 기준, 강의 진도율을 80% 이상 히신 모든 분들께 코스 수료증을 송부해드려요.</p>
+    <hr>
+
+    <h2 style="text-align:center;">상단 메뉴바의 '학습하기'를 눌러 학습을 시작해보세요!</h2>
+
+  </div>
+  {% endblock %}
+</body>
