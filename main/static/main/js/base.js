@@ -21,5 +21,9 @@
 function goPage(url) {
   
 }
+
+function disabled() {
+  alert('학습 기간이 아닙니다.')
+}
   
   

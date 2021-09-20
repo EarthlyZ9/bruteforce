@@ -178,3 +178,7 @@ def reset_password(request):
 
   context = {'form': form, }
   return render(request, 'accounts/reset_password_form.html', context)
+
+
+def my_study_group(request):
+  return render(request, 'accounts/my_study_group.html')
