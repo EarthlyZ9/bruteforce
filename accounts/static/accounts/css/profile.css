@@ -31,7 +31,7 @@ body {
 }
 
 .points p {
-  margin-bottom: 8px;
+  margin-bottom: 3px;
 }
 
 .points a {
@@ -57,7 +57,7 @@ fieldset {
 
 .info {
   display: inline-block;
-  margin: 8px;
+  margin: 5px;
   text-align: left;
   width: 300px;
 }

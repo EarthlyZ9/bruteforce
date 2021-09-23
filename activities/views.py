@@ -16,16 +16,15 @@ from django.contrib import messages
 
 # Create your views here.
 def rankings(request):
-  #상위 10인 계산하는 view
-  #python_user = Account_Info.objects.filter(course='python')
-  #ds_user = Account_Info.objects.filter(course='datascience')
-  #htmlcss_user = Account_Info.objects.filter(course='htmlcss')
+  user = request.user
+  date_now = datetime.datetime.now()
+  week = Week.objects.filter(season=user.season, start_date__lte=date_now, end_date__gt=date_now).first()
 
   python_top_ten = PointsStatus.objects.filter(user__course = 'python').order_by('total_points')[:10]
   ds_top_ten = PointsStatus.objects.filter(user__course = 'datascience').order_by('total_points')[:10]
   htmlcss_top_ten = PointsStatus.objects.filter(user__course = 'htmlcss').order_by('total_points')[:10]
 
-  return render(request, 'activities/rankings.html', {'python_top_ten':python_top_ten, 'ds_top_ten':ds_top_ten, 'htmlcss_top_ten':htmlcss_top_ten})
+  return render(request, 'activities/rankings.html', {'python_top_ten':python_top_ten, 'ds_top_ten':ds_top_ten, 'htmlcss_top_ten':htmlcss_top_ten, 'week':week})
 
 @login_required(login_url='accounts:login')
 def study_log(request):

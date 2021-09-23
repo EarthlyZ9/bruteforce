@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'points',
     'adminpage',
     'discussions',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [

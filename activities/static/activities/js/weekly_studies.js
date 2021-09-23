@@ -1,4 +1,4 @@
-loginButton.addEventListener("click", onLoginBtnClick);
+
 
 var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
 var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
@@ -29,7 +29,7 @@ function validate() {
   if (!attendanceInput && !fileInput && !urlInput) {
     alert('제출할 내용이 없네요 :(')
     return false
-  } else if (attendanceInput.length < 50) {
+  } else if (attendanceInput.length < 50 && attendanceInput > 1) {
     alert('학습 일지(출석)는 50자 이상 작성해주세요.')
     return false
   } else if (attendanceInput || fileInput || urlInput) {

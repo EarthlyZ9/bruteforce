@@ -17,9 +17,12 @@
       </div>
       <div class="info points">
         <h1>{{user_info.name}}님,</h1>
-        <p>누적 포인트: {{total_points}} </p>
+        <div style="display:inline-block;">
+          <p>학습 형태: {% if user_info.individual == True %}개인 학습{% else %}스터디 그룹 {{user_info.group}}조{% endif %}</p>
+          <p style="display:inline-block; margin-right: 10px;">누적 포인트: {{total_points}}</p>
+          <a style="display:inline-block;" type="button" onclick="window.open('purchase_records','purchase-records','width=500, height=400, menubar=no, status=no');" data-bs-toggle="tooltip" data-bs-placement="right" title="포인트 사용 내역을 확인하거나 가용 포인트 현황을 업데이트하려면 여기를 클릭하세요."><i class="fas fa-question-circle"></i></a>
+        </div>
         <p>가용 포인트: {{available_points}} </p>
-        <a type="button" onclick="window.open('purchase_records','purchase-records','width=500, height=400, menubar=no, status=no');" data-bs-toggle="tooltip" data-bs-placement="right" title="포인트 사용 내역을 확인하거나 가용 포인트 현황을 업데이트하려면 여기를 클릭하세요.">학습 포인트 사용 내역 보기</a>
       </div>
 
       <fieldset disabled>

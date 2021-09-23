@@ -9,67 +9,70 @@
 <body>
   {% block container %}
   <div class="py-4 d-flex align-items-center" style='height:calc(100% - 60px);'>
-    <div class='container' style="padding: 0;" id="gradient_background">
+    <div class='container' style="padding: 0; width: 95%;" id="gradient_background">
       <div class='header d-flex align-items-center justify-content-center'>
         <img class='header_img my-3' src="{% static 'activities/images/ranking_title.png' %}">
       </div>
-      <div class='courses container-fluid' style="height:auto;">
-    
-        <!--파이썬-->
-        <div class='container course' id='python'>
-          <div class='title_container'><h1 style="display:inline-block; margin-right:5px;">프로그래밍 기초</h1><h5 style="display:inline-block;">in Python</h5></div>
-          {% for user in python_top_ten %}
-            <div class='single_row' style='display:inline-block;'>
-              <div class='rank' style='display:inline-block;'>
-                {% if forloop.counter == 1 %}<img src="{% static 'activities/images/ranking_gold.png' %}">{% elif forloop.counter == 2%}<img src="{% static 'activities/images/ranking_silver.png' %}">{% elif forloop.counter == 3 %}<img src="{% static 'activities/images/ranking_bronze.png' %}">{% else %}<p>{{forloop.counter}}</p>{% endif %}
+      {% if week.week_num == 1 %}
+        <p>아직 집계가 되지 않았어요 :(</p>
+      {% else %}
+        <div class='courses container-fluid' style="height:auto;">
+          <!--파이썬-->
+          <div class='container course' id='python'>
+            <div class='title_container'><h1 style="display:inline-block; margin-right:5px;">프로그래밍 기초</h1><h5 style="display:inline-block;">in Python</h5></div>
+            {% for user in python_top_ten %}
+              <div class='single_row' style='display:inline-block;'>
+                <div class='rank' style='display:inline-block;'>
+                  {% if forloop.counter == 1 %}<img src="{% static 'activities/images/ranking_gold.png' %}">{% elif forloop.counter == 2%}<img src="{% static 'activities/images/ranking_silver.png' %}">{% elif forloop.counter == 3 %}<img src="{% static 'activities/images/ranking_bronze.png' %}">{% else %}<p>{{forloop.counter}}</p>{% endif %}
+                </div>
+                <img src="{% static 'activities/images/ranking_profile.png' %}" style='display:inline-block; width:15%;'>
+                <div class='ranking_info py-1 px-1' style='display:inline-block; margin-right: 8px;'>
+                  <p>{{user.user}}</p>
+                  <img src="{% static 'activities/images/ranking_stars.png' %}" style='display:inline-block; width:35%;' class='mx-2'>
+                  <p>{{user.total_points}}</p>
+                </div>
               </div>
-              <img src="{% static 'activities/images/ranking_profile.png' %}" style='display:inline-block; width:15%;'>
-              <div class='ranking_info py-1 px-1' style='display:inline-block; margin-right: 8px;'>
-                <p>{{user.user}}</p>
-                <img src="{% static 'activities/images/ranking_stars.png' %}" style='display:inline-block; width:35%;' class='mx-2'>
-                <p>{{user.total_points}}</p>
-              </div>
-            </div>
-          {% endfor %}
-        </div>
+            {% endfor %}
+          </div>
 
-        <!--데이터 사이언스-->
-        <div class='container course' id='datascience'>
-          <div class='title_container'><h1>데이터 사이언스 입문</h1></div>
-          {% for user in ds_top_ten %}
-            <div class='single_row' style='display:inline-block;'>
-              <div class='rank' style='display:inline-block;'>
-                {% if forloop.counter == 1 %}<img src="{% static 'activities/images/ranking_gold.png' %}">{% elif forloop.counter == 2%}<img src="{% static 'activities/images/ranking_silver.png' %}">{% elif forloop.counter == 3 %}<img src="{% static 'activities/images/ranking_bronze.png' %}">{% else %}<p>{{forloop.counter}}</p>{% endif %}
+          <!--데이터 사이언스-->
+          <div class='container course' id='datascience'>
+            <div class='title_container'><h1>데이터 사이언스 입문</h1></div>
+            {% for user in ds_top_ten %}
+              <div class='single_row' style='display:inline-block;'>
+                <div class='rank' style='display:inline-block;'>
+                  {% if forloop.counter == 1 %}<img src="{% static 'activities/images/ranking_gold.png' %}">{% elif forloop.counter == 2%}<img src="{% static 'activities/images/ranking_silver.png' %}">{% elif forloop.counter == 3 %}<img src="{% static 'activities/images/ranking_bronze.png' %}">{% else %}<p>{{forloop.counter}}</p>{% endif %}
+                </div>
+                <img src="{% static 'activities/images/ranking_profile.png' %}" style='display:inline-block; width:15%;'>
+                <div class='ranking_info py-1 px-1' style='display:inline-block; margin-right: 8px;'>
+                  <p>{{user.user}}</p>
+                  <img src="{% static 'activities/images/ranking_stars.png' %}" style='display:inline-block; width:35%;' class='mx-2'>
+                  <p>{{user.total_points}}</p>
+                </div>
               </div>
-              <img src="{% static 'activities/images/ranking_profile.png' %}" style='display:inline-block; width:15%;'>
-              <div class='ranking_info py-1 px-1' style='display:inline-block; margin-right: 8px;'>
-                <p>{{user.user}}</p>
-                <img src="{% static 'activities/images/ranking_stars.png' %}" style='display:inline-block; width:35%;' class='mx-2'>
-                <p>{{user.total_points}}</p>
-              </div>
-            </div>
-          {% endfor %}
-        </div>
-          
+            {% endfor %}
+          </div>
+            
 
-        <!--웹 퍼블리싱-->
-        <div class='container course' id='htmlcss'>
-          <div class='title_container'><h1>웹 퍼블리싱</h1></div>
-          {% for user in htmlcss_top_ten %}
-            <div class='single_row' style='display:inline-block;'>
-              <div class='rank' style='display:inline-block;'>
-                {% if forloop.counter == 1 %}<img src="{% static 'activities/images/ranking_gold.png' %}">{% elif forloop.counter == 2%}<img src="{% static 'activities/images/ranking_silver.png' %}">{% elif forloop.counter == 3 %}<img src="{% static 'activities/images/ranking_bronze.png' %}">{% else %}<p>{{forloop.counter}}</p>{% endif %}
+          <!--웹 퍼블리싱-->
+          <div class='container course' id='htmlcss'>
+            <div class='title_container'><h1>웹 퍼블리싱</h1></div>
+            {% for user in htmlcss_top_ten %}
+              <div class='single_row' style='display:inline-block;'>
+                <div class='rank' style='display:inline-block;'>
+                  {% if forloop.counter == 1 %}<img src="{% static 'activities/images/ranking_gold.png' %}">{% elif forloop.counter == 2%}<img src="{% static 'activities/images/ranking_silver.png' %}">{% elif forloop.counter == 3 %}<img src="{% static 'activities/images/ranking_bronze.png' %}">{% else %}<p>{{forloop.counter}}</p>{% endif %}
+                </div>
+                <img src="{% static 'activities/images/ranking_profile.png' %}" style='display:inline-block; width:15%;'>
+                <div class='ranking_info py-1 px-1' style='display:inline-block; margin-right: 8px;'>
+                  <p>{{user.user}}</p>
+                  <img src="{% static 'activities/images/ranking_stars.png' %}" style='display:inline-block; width:35%;' class='mx-2'>
+                  <p>{{user.total_points}}</p>
+                </div>
               </div>
-              <img src="{% static 'activities/images/ranking_profile.png' %}" style='display:inline-block; width:15%;'>
-              <div class='ranking_info py-1 px-1' style='display:inline-block; margin-right: 8px;'>
-                <p>{{user.user}}</p>
-                <img src="{% static 'activities/images/ranking_stars.png' %}" style='display:inline-block; width:35%;' class='mx-2'>
-                <p>{{user.total_points}}</p>
-              </div>
-            </div>
-          {% endfor %}
+            {% endfor %}
+          </div>
         </div>
-      </div>
+      {% endif %}
     </div>
   </div>
   {% endblock container %}

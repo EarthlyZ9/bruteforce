@@ -16,7 +16,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('title', models.CharField(choices=[('1', '1차 진도율'), ('2', '2차 진도율'), ('3', '3차 진도율'), ('final', '최종 진도율'), ('completion', '종료 시점 진도율 (수료증)')], max_length=20)),
-                ('file', models.FileField(upload_to=adminpage.models.make_file_path)),
+                ('file', models.FileField(upload_to=adminpage.models.make_file_path_progress)),
             ],
         ),
     ]

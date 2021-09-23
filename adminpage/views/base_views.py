@@ -1,14 +1,80 @@
-from django.shortcuts import render
+from django.http import HttpResponseRedirect
+from django.shortcuts import render, redirect
 from django.contrib.admin.views.decorators import staff_member_required
 from accounts.models import Account_Info
 from django.db.models import Q
 from django.core.paginator import Paginator
-import datetime
+from ..forms import StudyGroupAssignForm, ProgressPointsFileForm
+from ..models import StudyGroupAssign, Progress
+import csv
 
 # Create your views here.
 @staff_member_required
 def admin_page(request):
-  return render(request, 'adminpage/admin_page.html')
+  
+  if request.method == 'POST' and 'study_group' in request.POST: #스터디 그룹 배정
+    group_assign_form = StudyGroupAssignForm(request.POST, request.FILES)
+    print(request.POST.get('csv_file'))
+
+    csv_file = request.FILES['csv_file']
+    decoded_file = csv_file.read().decode('utf-8').splitlines()
+
+    #csv parcing
+    read_file = csv.DictReader(decoded_file)
+    for row in read_file:
+      username = row['username']
+      group = row['group']
+      print(group)
+      user = Account_Info.objects.filter(username=username).first()
+      user.group = group
+      user.save()
+
+    if group_assign_form.is_valid():
+      print('in')
+      group_assign_form.save()
+      return redirect('admin-page:admin-main')
+    else:
+      print(group_assign_form.errors)
+
+  elif request.method == 'POST' and 'apply_progress' in request.POST: #스터디 그룹 배정
+    progress_points_form = ProgressPointsFileForm(request.POST, request.FILES)
+    print(request.FILES.get('progress_csv_file'))
+
+    period = request.POST.get('period')
+    csv_file = request.FILES['progress_csv_file']
+    decoded_file = csv_file.read().decode('utf-8').splitlines()
+
+    #csv parcing
+    read_file = csv.DictReader(decoded_file)
+    
+    
+    for row in read_file:
+      username = row['username']
+      points = row['points']
+      user = Progress.objects.filter(user__username=username).first()
+      if period == '1':
+        user.progress1 = points
+        user.save()
+      elif period == '2':
+        user.progress2 = points
+        user.save()
+      elif period == '3':
+        user.progress3 = points
+        user.save()
+      elif period == 'final':
+        user.progress4 = points
+        user.save()
+
+    if progress_points_form.is_valid():
+      print('in')
+      progress_points_form.save()
+      return redirect('admin-page:admin-main')
+    else:
+      print(progress_points_form.errors)
+
+    #
+  else: # POST
+    return render(request, 'adminpage/admin_page.html')
 
 @staff_member_required
 def user_info(request):

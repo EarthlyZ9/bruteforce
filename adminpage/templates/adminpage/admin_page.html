@@ -9,36 +9,55 @@
 <body>
 {% block container %}
 
-<h1>어드민 페이지</h1>
-<ul>
-  <li><a href={% url 'admin-page:user-info' %}>수강생 정보</a></li>
-  <li><a href={% url 'admin-page:weekly-studies' %}>주차별 학습활동 제출 현황</a></li>
-</ul>
+<div class="container">
+  <h1>어드민 페이지</h1>
+  <ul>
+    <li><a href={% url 'admin-page:user-info' %}>수강생 정보</a></li>
+    <li><a href={% url 'admin-page:weekly-studies' %}>주차별 학습활동 제출 현황</a></li>
+  </ul>
 
-<a type='button' class='btn btn-primary' href="{% url 'admin-page:python-points' %}">파이썬 수강생 학습포인트 확인 [집계하기]</a>
-<a type='button' class='btn btn-primary' href="{% url 'admin-page:ds-points' %}">데이터 사이언스 수강생 학습포인트 확인 [집계하기]</a>
-<a type='button' class='btn btn-primary' href="{% url 'admin-page:htmlcss-points' %}">웹 퍼블리싱 수강생 학습포인트 확인 [집계하기]</a>
+  <a type='button' class='btn btn-primary' href="{% url 'admin-page:python-points' %}">파이썬 수강생 학습포인트 확인 [집계하기]</a>
+  <a type='button' class='btn btn-primary' href="{% url 'admin-page:ds-points' %}">데이터 사이언스 수강생 학습포인트 확인 [집계하기]</a>
+  <a type='button' class='btn btn-primary' href="{% url 'admin-page:htmlcss-points' %}">웹 퍼블리싱 수강생 학습포인트 확인 [집계하기]</a>
 
-<h2>스터디 그룹 편성 정보 입력</h2>
-<form method="post" id="input_study_group" class="row align-items-center" action="{% url 'adminpage:admin-page' %}">
-  {% csrf_token %}
-  <div class="input-group">
-    <input type="file" class="form-control" id="inputStudyGroupFile" aria-describedby="inputStudyGroupFileAddon" aria-label="Upload">
-    <button class="btn btn-outline-secondary" type="button" id="inputStudyGroupFileAddon">업로드</button>
+  <div class="container my-3" style="display:inline-block; text-align:center;">
+    <h2>스터디 그룹 편성 정보 입력</h2>
+    <form method="post" enctype="multipart/form-data" id="input_study_group" class="row align-items-center justify-content-center" action="{% url 'admin-page:admin-main' %}">
+      {% csrf_token %}
+      <div class="input-group mb-3" style="width:15%;">
+        <span class="input-group-text" id="inputGroupSeaon">기수</span>
+        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroupSeason" name="season">
+      </div>
+      <div class="input-group mb-3" style="width: 80%;">
+        <label class="input-group-text" for="inputGroupFile">csv 파일</label>
+        <input type="file" class="form-control" id="inputGroupFile" name="csv_file">
+      </div>
+      <button class="btn btn-primary" style="width:10%;" type="submit" name="study_group">등록</button>
+    </form>
   </div>
-</form>
 
-
-<h2>진도율 집계하기</h2>
-<p style="color:red;">2, 4, 6, 8주차의 경우, 진도율 집계 후 학습 포인트 확인</p>
-<form method="post" id="input_progress_file" class="row align-items-center" action="{% url 'adminpage:admin-page' %}">
-  {% csrf_token %}
-  <div class="input-group">
-    <input type="file" class="form-control" id="inputProgressFile" aria-describedby="inputProgressFileAddon" aria-label="Upload">
-    <button class="btn btn-outline-secondary" type="button" id="inputProgressFileAddon">업로드</button>
+  <div class="container my-3" style="display:inline-block; text-align:center;">
+    <h2>진도율 집계하기</h2>
+    <p style="color:red;">2, 4, 6, 8주차의 경우, 진도율 집계 후 학습 포인트 확인</p>
+    <form method="post" enctype="multipart/form-data" id="input_progress_file" class="row align-items-center justify-content-center" action="{% url 'admin-page:admin-main' %}">
+      {% csrf_token %}
+      <select class="form-select mb-3" aria-label="Default select example" name="period" style="width: 20%">
+        <option disabled selected>진도율 집계 차수</option>
+        <option value="1">1차</option>
+        <option value="2">2차</option>
+        <option value="3">3차</option>
+        <option value="final">최종</option>
+        <option value="completion">수료</option>
+      </select>
+      <div class="input-group mb-3" style="width: 75%;">
+        <label class="input-group-text" for="inputProgressFile">csv 파일</label>
+        <input type="file" class="form-control" id="inputProgressFile" name="progress_csv_file">
+      </div>
+      <button class="btn btn-primary" style="width:10%;" type="submit" name="apply_progress">등록</button>
+    </form>
   </div>
-</form>
 
+</div>
 
 
 

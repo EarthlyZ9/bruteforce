@@ -87,5 +87,6 @@ class Account_Info(AbstractUser):
   bank_account = models.CharField(max_length=30, null=True, blank=True, default="입력전")
   bank_name = models.CharField(max_length=20, choices=BANK_LIST, null=True, blank=True, default="입력전")
   season = models.IntegerField(blank=True, default='7', null=True)
+  group = models.IntegerField(blank=True, null=True)
 
   REQUIRED_FIELDS =['name', 'date_of_birth','course','univ','mobile_num']
