@@ -14,9 +14,9 @@ def admin_page(request):
   
   if request.method == 'POST' and 'study_group' in request.POST: #스터디 그룹 배정
     group_assign_form = StudyGroupAssignForm(request.POST, request.FILES)
-    print(request.POST.get('csv_file'))
+    print(request.FILES.get('file'))
 
-    csv_file = request.FILES['csv_file']
+    csv_file = request.FILES['file']
     decoded_file = csv_file.read().decode('utf-8').splitlines()
 
     #csv parcing
