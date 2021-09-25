@@ -25,11 +25,13 @@ function validate() {
   const attendanceInput = document.getElementById("AttendanceInput").value;
   const fileInput = document.getElementById("FileInput").value;
   const urlInput  = document.getElementById("UrlInput").value;
+
+  console.log(attendanceInput.length)
   
   if (!attendanceInput && !fileInput && !urlInput) {
     alert('제출할 내용이 없네요 :(')
     return false
-  } else if (attendanceInput.length < 50 && attendanceInput > 1) {
+  } else if (attendanceInput.length < 50 && attendanceInput.length > 1) {
     alert('학습 일지(출석)는 50자 이상 작성해주세요.')
     return false
   } else if (attendanceInput || fileInput || urlInput) {
