@@ -1,5 +1,10 @@
 h2, h3 {
   margin-top: 15px;
+  text-align: left;
+}
+
+h1, p, li {
+  text-align: left;
 }
 
 .highlight {
@@ -23,8 +28,18 @@ h2, h3 {
 }
 
 .percent {
-  display: inline-block;
+  display: inline;
   font-size: 30px;
+  text-align: left;
+}
+
+iframe {
+  text-align: center;
+}
+
+a {
+  display: inline-block;
+  text-align: left;
 }
 
 
