@@ -15,7 +15,7 @@ class Material(models.Model):
   
   title = models.CharField(max_length=225)
   file_type = models.CharField(max_length=50)
-  open_week = models.IntegerField(blank=True, null=True)
+  open_week = models.IntegerField(blank=True, null=True, default=0)
   content = models.TextField()
   category = models.CharField(max_length=20, choices=CATEGORY)
   file = models.FileField(upload_to="materials/%Y/%m/%d", null=True, blank=True)

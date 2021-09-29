@@ -160,7 +160,12 @@ def material_list(request):
     paginator = Paginator(material_list, 10)
     page_obj = paginator.get_page(page)
 
-    context = {'material_list': page_obj,'page':page,'kw':kw,'category':category}
+    #context 
+    user = request.user
+    date_now = datetime.datetime.now()
+    week = Week.objects.filter(season=user.season, start_date__lte=date_now, end_date__gt=date_now).first()
+
+    context = {'material_list': page_obj,'page':page,'kw':kw,'category':category, 'week':week}
     #데이터를 템플릿에 적용하여 HTML로 변환
     return render(request, 'activities/material_list.html', context)
 

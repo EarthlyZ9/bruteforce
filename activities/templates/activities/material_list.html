@@ -44,6 +44,7 @@
           </thead>
           <tbody>
             {% for material in material_list %}
+            {% if material.open_week <= week.week_num %}
               <tr class="accordion-toggle" data-bs-toggle="collapse" data-bs-target="#demo{{forloop.counter}}">
               <!--fontawesome 아이콘으로 바꾸기-->
                 <td><img src="{% static 'activities/images/view_icon.png' %}" height="25px"></td>
@@ -51,12 +52,11 @@
                 <td>{{material.get_category_display}}</td>
                 <td>{{material.file_type}}</td>
                 <td>{{material.title}}</td>
-                <!--fontawesome 아이콘으로 바꾸기-->
                 <td>
                   <form action="{% url 'activities:download' pk=material.id %}">
                     <button type="submit" class="download_btn">
                       <i class="fas fa-file-download"></i>
-                    </butt>
+                    </button>
                   </form>
                 </td>
                 <td>{{material.upload_date|date:"Y년 M d일"}}</td>
@@ -64,6 +64,7 @@
               <tr class="hiddenRow accordion-body collapse" id="demo{{forloop.counter}}"> 
                 <td colspan="7">{{material.content}}</td>
               </tr>
+            {% endif %}
             {% endfor %}
           </tbody>
         </table>
