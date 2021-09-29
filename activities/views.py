@@ -143,7 +143,7 @@ def material_list(request):
     elif category == 'common':
         material_list = Material.objects.filter(category='common')
     else:  # all
-        material_list = Material.objects.order_by('id')
+        material_list = Material.objects.order_by('-id')
 
     #들어온 검색어로 검색.
     if kw:
