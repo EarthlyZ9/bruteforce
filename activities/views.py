@@ -131,7 +131,7 @@ def material_list(request):
 
 
     #생성날짜 순으로 정렬해서 모델에서 가져옴
-    material_list = Material.objects.order_by('upload_date')
+    material_list = Material.objects.order_by('id')
 
     # 정렬
     if category == 'python':
@@ -143,7 +143,7 @@ def material_list(request):
     elif category == 'common':
         material_list = Material.objects.filter(category='common')
     else:  # all
-        material_list = Material.objects.order_by('-upload_date')
+        material_list = Material.objects.order_by('id')
 
     #들어온 검색어로 검색.
     if kw:
