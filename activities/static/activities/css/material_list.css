@@ -123,3 +123,13 @@ hr {
   border-color: #FEB900;
   color: black;
 }
+
+.download_btn {
+  border: none;
+  background-color: transparent;
+}
+
+.fa-file-download {
+  font-size: 1.2rem;
+  color: rgb(35,35,35);
+}

@@ -1,3 +1,4 @@
+from typing import ValuesView
 from django.http.response import HttpResponse
 import json
 from django.shortcuts import render, redirect, get_object_or_404, resolve_url
@@ -12,6 +13,10 @@ from .forms import WeeklyStudiesForm
 from django.http import JsonResponse
 from django.utils import timezone
 from django.contrib import messages
+from django.views.generic.detail import SingleObjectMixin
+from django.http import FileResponse
+from django.core.files.storage import FileSystemStorage
+from django.views.generic import View
 
 
 # Create your views here.
@@ -158,6 +163,21 @@ def material_list(request):
     context = {'material_list': page_obj,'page':page,'kw':kw,'category':category}
     #데이터를 템플릿에 적용하여 HTML로 변환
     return render(request, 'activities/material_list.html', context)
+
+
+class FileDownLoadView(SingleObjectMixin, View):
+  queryset = Material.objects.all()
+
+  def get(self, request, pk):
+    object = self.get_object()
+    file_path = object.file.path
+    fs = FileSystemStorage(file_path)
+    response = FileResponse(fs.open(file_path, 'rb'))
+    response['Content-Disposition'] = f'attachment; filename={object.get_filename()}'
+
+    return response
+
+
 
 @login_required(login_url='accounts:login')
 def weekly_studies(request):

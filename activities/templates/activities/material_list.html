@@ -36,10 +36,10 @@
               <th scope="col" style="width: 7%;"></th>
               <th scope="col" style="width: 7%;">#</th>
               <th scope="col" style="width: 15%;">코스</th>
-              <th scope="col">자료유형</th>
+              <th scope="col" style="width: 15%;">자료유형</th>
               <th scope="col">제목</th>
-              <th scope="col">첨부파일</th>
-              <th scope="col" style="width: 12%;">작성일</th>
+              <th scope="col" style="width: 5%;">첨부파일</th>
+              <th scope="col" style="width: 15%;">작성일</th>
             </tr>
           </thead>
           <tbody>
@@ -52,7 +52,13 @@
                 <td>{{material.file_type}}</td>
                 <td>{{material.title}}</td>
                 <!--fontawesome 아이콘으로 바꾸기-->
-                <td><a href="{% if material.file %}{{material.file.url}}{% else %}#{% endif %}"><img src="{% static 'activities/images/download_icon.png' %}" height="25px"></a></td>
+                <td>
+                  <form action="{% url 'activities:download' pk=material.id %}">
+                    <button type="submit" class="download_btn">
+                      <i class="fas fa-file-download"></i>
+                    </butt>
+                  </form>
+                </td>
                 <td>{{material.upload_date|date:"Y년 M d일"}}</td>
               </tr>
               <tr class="hiddenRow accordion-body collapse" id="demo{{forloop.counter}}"> 

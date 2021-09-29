@@ -1,5 +1,6 @@
 from django.urls import path
 from . import views
+from .views import FileDownLoadView
 
 urlpatterns = [
   path('rankings/', views.rankings, name='rankings'),
@@ -10,4 +11,5 @@ urlpatterns = [
   path('htmlcss_outputs/feedbacks/vote/<int:fruit_id>/', views.vote_fruit, name='vote-fruit'), #추천
   path('weekly_studies/',views.weekly_studies, name='weekly-studies'),
   path('materials/',views.material_list, name='material-list'),
+  path('materials/<int:pk>/', FileDownLoadView.as_view(), name="download"),
 ]

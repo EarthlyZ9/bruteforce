@@ -1,5 +1,6 @@
 from django.db import models
 from accounts.models import Account_Info
+import os
 
 
 # Create your models here.
@@ -14,6 +15,7 @@ class Material(models.Model):
   
   title = models.CharField(max_length=225)
   file_type = models.CharField(max_length=50)
+  open_week = models.IntegerField(blank=True, null=True)
   content = models.TextField()
   category = models.CharField(max_length=20, choices=CATEGORY)
   file = models.FileField(upload_to="materials/%Y/%m/%d", null=True, blank=True)
@@ -21,6 +23,9 @@ class Material(models.Model):
 
   def __str__(self):
     return self.title
+  
+  def get_filename(self):
+    return os.path.basename(self.file.name)
 
 
 def make_file_path(instance, filename):
