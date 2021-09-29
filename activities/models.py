@@ -12,7 +12,7 @@ class Material(models.Model):
     ('htmlcss', '웹 퍼블리싱')
   )
 
-  
+  num = models.IntegerField()
   title = models.CharField(max_length=225)
   file_type = models.CharField(max_length=50)
   open_week = models.IntegerField(blank=True, null=True, default=0)
