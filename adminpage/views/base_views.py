@@ -107,6 +107,7 @@ def user_info(request):
         Q(username__icontains=kw) |
         Q(name__icontains=kw) |
         Q(course__icontains=kw) |
+        Q(individual__icontains=kw) |
         Q(mobile_num__icontains=kw)  |
         Q(recommender__icontains=kw) |
         Q(bank_account__icontains=kw) |
