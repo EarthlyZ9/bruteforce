@@ -209,7 +209,7 @@ def weekly_studies(request):
       print(form.errors)
 
   else:
-    return render(request, 'activities/weekly_studies.html', {'week_num':week, 'weekly_studies':weekly_studies_inst})
+    return render(request, 'activities/weekly_studies.html', {'week':week, 'weekly_studies':weekly_studies_inst})
 
 
 
