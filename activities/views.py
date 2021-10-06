@@ -23,7 +23,7 @@ from django.views.generic import View
 def rankings(request):
   user = request.user
   date_now = timezone.now()
-  week = Week.objects.filter(season=user.season, start_date__lte=date_now, end_date__gt=date_now).first()
+  week = Week.objects.filter(season=user.season, start_date__lte=date_now, end_date__gte=date_now).first()
 
   python_top_ten = PointsStatus.objects.filter(user__course = 'python').order_by('total_points')[:10]
   ds_top_ten = PointsStatus.objects.filter(user__course = 'datascience').order_by('total_points')[:10]
@@ -162,8 +162,8 @@ def material_list(request):
 
     #context 
     user = request.user
-    date_now = datetime.datetime.now()
-    week = Week.objects.filter(season=user.season, start_date__lte=date_now, end_date__gt=date_now).first()
+    date_now = timezone.now()
+    week = Week.objects.filter(season=user.season, start_date__lte=date_now, end_date__gte=date_now).first()
 
     context = {'material_list': page_obj,'page':page,'kw':kw,'category':category, 'week':week}
     #데이터를 템플릿에 적용하여 HTML로 변환
@@ -189,7 +189,8 @@ def weekly_studies(request):
   user = request.user
   post_data = request.POST
   date_now = timezone.now()
-  week = Week.objects.filter(season=user.season, start_date__lte=date_now, end_date__gt=date_now).first()
+  print(date_now)
+  week = Week.objects.filter(season=user.season, start_date__lte=date_now, end_date__gte=date_now).first()
   weekly_studies_inst = WeeklyStudies.objects.filter(user=user, week=week).first()
   if request.method=='POST':
     print(request.POST)
