@@ -32,7 +32,7 @@
             </div>
             <div class="input-box" style="width:100%;">
               <div class="form-floating mb-1" style='z-index: 1'>
-                <textarea class="form-control input-text" id="AttendanceInput" onkeyup="checkLength(this)"  minlength= "50" placeholder="이번주 학습 일지를 작성해주세요! 배운 내용, 느낀점 등 자유롭게 작성해주시면 됩니다." value={{weekly_studies.attendance|default_if_none:''}} name='attendance'></textarea>
+                <textarea class="form-control input-text" id="AttendanceInput" onkeyup="checkLength(this)"  minlength= "50" value={{weekly_studies.attendance|default_if_none:''}}  placeholder="이번주 학습 일지를 작성해주세요! 배운 내용, 느낀점 등 자유롭게 작성해주시면 됩니다."  name='attendance'></textarea>
                 <label for="AttendanceInput">강의 수강 후, 이번주 학습 일지를 작성해주세요! 배운 내용, 느낀점 등 자유롭게 작성해주시면 됩니다.</label>
               </div>
               <span style="color:#aaa;" id="counter">(최소 50자 / 0)</span>
@@ -51,8 +51,8 @@
               </div>
               <div class="container input-div">
                 <div class="input-group">
-                  <span class="input-group-text" id="UrlInput">기타 url</span>
-                  <input type="url" class="form-control" name='url' value={{weekly_studies.url|default_if_none:''}}>
+                  <span class="input-group-text">기타 url</span>
+                  <input type="url" class="form-control" name='url' id="UrlInput" value={{weekly_studies.url|default_if_none:''}}>
                 </div>
               </div>
               <button type="submit" class="btn btn-primary" id="submit-btn" style="margin-top:10px;" data-bs-toggle="tooltip" data-bs-placement="bottom" title="출석과 주차별 학습 활동 중 일부만 작성하셔도 따로 제출 가능합니다.">제출하기</ㅠ> 
