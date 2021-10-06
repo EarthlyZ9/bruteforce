@@ -22,7 +22,7 @@ from django.views.generic import View
 # Create your views here.
 def rankings(request):
   user = request.user
-  date_now = datetime.datetime.now()
+  date_now = timezone.now()
   week = Week.objects.filter(season=user.season, start_date__lte=date_now, end_date__gt=date_now).first()
 
   python_top_ten = PointsStatus.objects.filter(user__course = 'python').order_by('total_points')[:10]
@@ -188,7 +188,7 @@ class FileDownLoadView(SingleObjectMixin, View):
 def weekly_studies(request):
   user = request.user
   post_data = request.POST
-  date_now = datetime.datetime.now()
+  date_now = timezone.now()
   week = Week.objects.filter(season=user.season, start_date__lte=date_now, end_date__gt=date_now).first()
   weekly_studies_inst = WeeklyStudies.objects.filter(user=user, week=week).first()
   if request.method=='POST':

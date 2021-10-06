@@ -9,7 +9,7 @@ from .forms import FindIdForm, PasswordChangeCustomForm
 from django.contrib.auth import update_session_auth_hash
 from adminpage.models import PointsStatus
 from accounts.models import Account_Info
-import datetime
+from django.utils import timezone
 from activities.models import Week
 from django.core.mail import send_mail
 from django.conf import settings
@@ -24,7 +24,7 @@ def profile(request):
   #1주차부터 12주차 계산해서 보여주기
 
   #주차 표시
-  date_now = datetime.datetime.now()
+  date_now = timezone.now()
   user_info = request.user
   week_num = Week.objects.filter(season=user_info.season, start_date__lte=date_now, end_date__gte=date_now).first().week_num
 
