@@ -49,8 +49,9 @@ def admin_page(request):
     
     
     for row in read_file:
-      username = row['username']
-      points = row['points']
+      username = row[username]
+      print(username)
+      points = row[points]
       user = Progress.objects.filter(user__username=username).first()
       if period == '1':
         user.progress1 = points
