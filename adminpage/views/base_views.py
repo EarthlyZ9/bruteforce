@@ -22,8 +22,8 @@ def admin_page(request):
     #csv parcing
     read_file = csv.DictReader(decoded_file)
     for row in read_file:
-      username = row['username']
-      group = row['group']
+      username = row['userid']
+      group = int(row[group])
       print(group)
       user = Account_Info.objects.filter(username=username).first()
       user.group = group
@@ -49,8 +49,7 @@ def admin_page(request):
     
     
     for row in read_file:
-      username = row[username]
-      print(username)
+      username = row['userid']
       points = int(row[points])
       user = Progress.objects.filter(user__username=username).first()
       if period == '1':
