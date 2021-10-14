@@ -52,7 +52,7 @@ class StudyGroupAssign(models.Model):
 
 def make_file_path_progress(instance, filename):
   path = 'progress_studies/{season}/{filename}'.format(
-    season=instance.week.season,
+    season=instance.season,
     filename=filename,
   )
   return path
@@ -65,6 +65,9 @@ class ProgressPointsFile(models.Model):
     ('final', '최종 진도율'),
     ('completion', '종료 시점 진도율 (수료증)'),
   )
-  #season 
+  season = models.IntegerField()
   period = models.CharField(max_length=20, choices=PERIOD_CHOICES)
   progress_csv_file = models.FileField(upload_to=make_file_path_progress)
+
+  def __str__(self):
+    return str(self.season) + '_' + str(self.period)

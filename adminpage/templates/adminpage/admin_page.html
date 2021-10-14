@@ -41,7 +41,11 @@
     <p style="color:red;">2, 4, 6, 8주차의 경우, 진도율 집계 후 학습 포인트 확인</p>
     <form method="post" enctype="multipart/form-data" id="input_progress_file" class="row align-items-center justify-content-center" action="{% url 'admin-page:admin-main' %}">
       {% csrf_token %}
-      <select class="form-select mb-3" aria-label="Default select example" name="period" style="width: 20%">
+      <div class="input-group mb-3" style="width:15%;">
+        <span class="input-group-text" id="inputGroupSeaon">기수</span>
+        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroupSeason" name="season">
+      </div>
+      <select class="form-select mb-3" aria-label="Default select example" name="period" style="width: 15%">
         <option disabled selected>진도율 집계 차수</option>
         <option value="1">1차</option>
         <option value="2">2차</option>
@@ -49,10 +53,11 @@
         <option value="final">최종</option>
         <option value="completion">수료</option>
       </select>
-      <div class="input-group mb-3" style="width: 75%;">
+      <div class="input-group mb-3" style="width:70%;">
         <label class="input-group-text" for="inputProgressFile">csv 파일</label>
         <input type="file" class="form-control" id="inputProgressFile" name="progress_csv_file">
       </div>
+
       <button class="btn btn-primary" style="width:10%;" type="submit" name="apply_progress">등록</button>
     </form>
   </div>
