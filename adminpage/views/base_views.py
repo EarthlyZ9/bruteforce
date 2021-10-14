@@ -51,7 +51,7 @@ def admin_page(request):
     for row in read_file:
       username = row['userid']
       points = int(row['points'])
-      user = Progress.objects.filter(user=username).first()
+      user = Progress.objects.filter(user__username=username).first()
       if period == '1':
         user.progress1 = points
         user.save()
