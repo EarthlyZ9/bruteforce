@@ -74,7 +74,7 @@ class Account_Info(AbstractUser):
 
   name = models.CharField(max_length=10)
   date_of_birth = models.DateField()
-  season = models.IntegerField(blank=True, null=True, default=7)
+  season = models.IntegerField(blank=True, null=True, default=8)
   course = models.CharField(max_length=15, choices=COURSE_CHOICES)
   individual = models.BooleanField(default=False, null = True, blank=True, help_text="파이썬 코스를 개인 단위로 수강하고자 하시는 분들은 체크해주세요! (데이터 사이언스 코스의 경우 스터디 활동이 필수이며, 웹 퍼블리싱 코스는 개인 단위로 이루어집니다.)")
   univ = models.CharField(max_length=15, null=True, blank=True)
