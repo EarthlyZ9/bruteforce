@@ -90,3 +90,6 @@ class Account_Info(AbstractUser):
   group = models.IntegerField(blank=True, null=True)
 
   REQUIRED_FIELDS =['name', 'date_of_birth','course','univ','mobile_num']
+
+  def __str__(self):
+    return str(self.season) + '_' + str(self.username)

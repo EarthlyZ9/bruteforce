@@ -13,6 +13,10 @@ import csv
 def admin_page(request):
   
   if request.method == 'POST' and 'study_group' in request.POST: #스터디 그룹 배정
+
+    season = request.POST.get('season')
+
+
     group_assign_form = StudyGroupAssignForm(request.POST, request.FILES)
     print(request.FILES.get('file'))
 
@@ -25,7 +29,7 @@ def admin_page(request):
       username = row['userid']
       group = int(row['group'])
       print(group)
-      user = Account_Info.objects.filter(username=username).first()
+      user = Account_Info.objects.filter(username=username, season=season).first()
       user.group = group
       user.save()
 
@@ -37,6 +41,7 @@ def admin_page(request):
       print(group_assign_form.errors)
 
   elif request.method == 'POST' and 'apply_progress' in request.POST: #스터디 그룹 배정
+    season = request.POST.get('season')
     progress_points_form = ProgressPointsFileForm(request.POST, request.FILES)
     print(request.FILES.get('progress_csv_file'))
 
@@ -52,7 +57,7 @@ def admin_page(request):
       username = row['userid']
       points = int(row['points'])
       print(username, points)
-      user = Progress.objects.filter(user__username=username).first()
+      user = Progress.objects.filter(user__username=username, user__season=season).first()
       if period == '1':
         user.progress1 = points
         user.save()
