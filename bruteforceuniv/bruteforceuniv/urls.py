@@ -20,15 +20,23 @@ from django.conf.urls.static import static
 from django.conf.urls import handler404
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include(('main.urls', 'main'), namespace='main')),
-    path('mypage/', include(('accounts.urls', 'accounts'), namespace='accounts')),
-    path('activities/', include(('activities.urls', 'activities'), namespace='activities')),
-    path('points/', include(('points.urls', 'points'), namespace='points')),
-    path('bf_admin/', include(('adminpage.urls', 'admin-page'), namespace='admin-page')),
-    path('discussions/', include(('discussions.urls', 'discussions'), namespace='discussions')),
+    path("admin/", admin.site.urls),
+    path("", include(("main.urls", "main"), namespace="main")),
+    path("mypage/", include(("accounts.urls", "accounts"), namespace="accounts")),
+    path(
+        "activities/",
+        include(("activities.urls", "activities"), namespace="activities"),
+    ),
+    path("points/", include(("points.urls", "points"), namespace="points")),
+    path(
+        "bf_admin/", include(("adminpage.urls", "admin-page"), namespace="admin-page")
+    ),
+    path(
+        "discussions/",
+        include(("discussions.urls", "discussions"), namespace="discussions"),
+    ),
 ]
 
-urlpatterns+= static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-handler404 = 'main.views.custom_404'
+handler404 = "main.views.custom_404"

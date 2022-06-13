@@ -12,4 +12,3 @@ class PurchaseRequestForm(forms.ModelForm):
     fields = [""]
 
 """
-

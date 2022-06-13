@@ -25,7 +25,7 @@ function onLoginBtnClick() {
     alert("아이디를 입력해주세요!")
   } else if (!userPassword) {
     alert("비밀번호를 입력해주세요!")
-  };
+  }
 }
 
 loginButton.addEventListener("click", onLoginBtnClick);
@@ -54,7 +54,7 @@ function checkLogin() {
       alert('로그인 되었습니다.')
     } else {
       alert('아이디 또는 비밀번호가 일치하지 않습니다.')
-    };
+    }
   }
   xhttp.open("POST", "/mypage/check/login", true);
   xhttp.setRequestHeader('X-CSRFToken', getCookie('csrftoken'));

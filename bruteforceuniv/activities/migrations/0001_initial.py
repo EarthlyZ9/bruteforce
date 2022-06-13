@@ -16,63 +16,168 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Material',
+            name="Material",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=225)),
-                ('file_type', models.CharField(max_length=50)),
-                ('content', models.TextField()),
-                ('category', models.CharField(choices=[('common', '공통'), ('python', '파이썬'), ('datascience', '데이터 사이언스'), ('htmlcss', '웹 퍼블리싱')], max_length=20)),
-                ('file', models.FileField(blank=True, null=True, upload_to='materials/%Y/%m/%d')),
-                ('upload_date', models.DateTimeField(auto_now=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("title", models.CharField(max_length=225)),
+                ("file_type", models.CharField(max_length=50)),
+                ("content", models.TextField()),
+                (
+                    "category",
+                    models.CharField(
+                        choices=[
+                            ("common", "공통"),
+                            ("python", "파이썬"),
+                            ("datascience", "데이터 사이언스"),
+                            ("htmlcss", "웹 퍼블리싱"),
+                        ],
+                        max_length=20,
+                    ),
+                ),
+                (
+                    "file",
+                    models.FileField(
+                        blank=True, null=True, upload_to="materials/%Y/%m/%d"
+                    ),
+                ),
+                ("upload_date", models.DateTimeField(auto_now=True)),
             ],
         ),
         migrations.CreateModel(
-            name='Week',
+            name="Week",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('season', models.IntegerField()),
-                ('week_num', models.IntegerField()),
-                ('start_date', models.DateField()),
-                ('end_date', models.DateField()),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("season", models.IntegerField()),
+                ("week_num", models.IntegerField()),
+                ("start_date", models.DateField()),
+                ("end_date", models.DateField()),
             ],
             options={
-                'unique_together': {('season', 'week_num')},
+                "unique_together": {("season", "week_num")},
             },
         ),
         migrations.CreateModel(
-            name='HtmlFruits',
+            name="HtmlFruits",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('topic', models.CharField(choices=[('Semi1', '세미 프로젝트 1'), ('Semi2', '세미 프로젝트 2'), ('Semi3', '세미 프로젝트 3'), ('Final', '파이널 프로젝트')], max_length=40)),
-                ('url', models.URLField(max_length=300)),
-                ('create_date', models.DateTimeField(auto_now_add=True)),
-                ('author', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='author_likes', to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "topic",
+                    models.CharField(
+                        choices=[
+                            ("Semi1", "세미 프로젝트 1"),
+                            ("Semi2", "세미 프로젝트 2"),
+                            ("Semi3", "세미 프로젝트 3"),
+                            ("Final", "파이널 프로젝트"),
+                        ],
+                        max_length=40,
+                    ),
+                ),
+                ("url", models.URLField(max_length=300)),
+                ("create_date", models.DateTimeField(auto_now_add=True)),
+                (
+                    "author",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="author_likes",
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='Feedbacks',
+            name="Feedbacks",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('content', models.TextField()),
-                ('create_date', models.DateTimeField(auto_now_add=True)),
-                ('author', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
-                ('feedback_to', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='activities.htmlfruits')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("content", models.TextField()),
+                ("create_date", models.DateTimeField(auto_now_add=True)),
+                (
+                    "author",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
+                (
+                    "feedback_to",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="activities.htmlfruits",
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='WeeklyStudies',
+            name="WeeklyStudies",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('attendance', models.TextField()),
-                ('file', models.FileField(blank=True, null=True, upload_to=activities.models.make_file_path)),
-                ('url', models.URLField(blank=True, max_length=300, null=True)),
-                ('submit_date', models.DateTimeField(auto_now_add=True)),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
-                ('week', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='activities.week')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("attendance", models.TextField()),
+                (
+                    "file",
+                    models.FileField(
+                        blank=True,
+                        null=True,
+                        upload_to=activities.models.make_file_path,
+                    ),
+                ),
+                ("url", models.URLField(blank=True, max_length=300, null=True)),
+                ("submit_date", models.DateTimeField(auto_now_add=True)),
+                (
+                    "user",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
+                (
+                    "week",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="activities.week",
+                    ),
+                ),
             ],
             options={
-                'unique_together': {('user', 'week')},
+                "unique_together": {("user", "week")},
             },
         ),
     ]

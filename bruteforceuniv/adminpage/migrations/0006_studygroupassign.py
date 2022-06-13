@@ -7,16 +7,29 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('adminpage', '0005_rename_title_progresspointsfile_period'),
+        ("adminpage", "0005_rename_title_progresspointsfile_period"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='StudyGroupAssign',
+            name="StudyGroupAssign",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('season', models.IntegerField()),
-                ('csv_file', models.FileField(upload_to=adminpage.models.make_file_path_groupinfo)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("season", models.IntegerField()),
+                (
+                    "csv_file",
+                    models.FileField(
+                        upload_to=adminpage.models.make_file_path_groupinfo
+                    ),
+                ),
             ],
         ),
     ]

@@ -9,18 +9,35 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('adminpage', '0001_initial'),
+        ("adminpage", "0001_initial"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='WeeklyActivityPoints',
+            name="WeeklyActivityPoints",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('week_num', models.IntegerField()),
-                ('attendance', models.IntegerField(blank=True, default=0, null=True)),
-                ('weekly_studies', models.IntegerField(blank=True, default=0, null=True)),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("week_num", models.IntegerField()),
+                ("attendance", models.IntegerField(blank=True, default=0, null=True)),
+                (
+                    "weekly_studies",
+                    models.IntegerField(blank=True, default=0, null=True),
+                ),
+                (
+                    "user",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
         ),
     ]

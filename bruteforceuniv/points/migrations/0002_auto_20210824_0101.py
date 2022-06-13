@@ -9,27 +9,47 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('points', '0001_initial'),
+        ("points", "0001_initial"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='points_purchase',
-            name='id',
+            model_name="points_purchase",
+            name="id",
         ),
         migrations.AddField(
-            model_name='points_purchase',
-            name='num',
-            field=models.IntegerField(default='1', primary_key=True, serialize=False),
+            model_name="points_purchase",
+            name="num",
+            field=models.IntegerField(default="1", primary_key=True, serialize=False),
             preserve_default=False,
         ),
         migrations.CreateModel(
-            name='PurchaseRequest',
+            name="PurchaseRequest",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('purchase_datetime', models.DateTimeField(auto_now_add=True)),
-                ('purchase_option', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='points.points_purchase')),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("purchase_datetime", models.DateTimeField(auto_now_add=True)),
+                (
+                    "purchase_option",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="points.points_purchase",
+                    ),
+                ),
+                (
+                    "user",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
         ),
     ]

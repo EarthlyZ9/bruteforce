@@ -9,20 +9,34 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('adminpage', '0002_weeklyactivitypoints'),
+        ("adminpage", "0002_weeklyactivitypoints"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='PointsStatus',
+            name="PointsStatus",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('total_points', models.IntegerField(blank=True, default=0, null=True)),
-                ('used_points', models.IntegerField(blank=True, default=0, null=True)),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("total_points", models.IntegerField(blank=True, default=0, null=True)),
+                ("used_points", models.IntegerField(blank=True, default=0, null=True)),
+                (
+                    "user",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
         ),
         migrations.DeleteModel(
-            name='ActivityPoints',
+            name="ActivityPoints",
         ),
     ]

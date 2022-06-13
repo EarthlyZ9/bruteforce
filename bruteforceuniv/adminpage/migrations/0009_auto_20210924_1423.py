@@ -6,27 +6,37 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('adminpage', '0008_auto_20210924_1420'),
+        ("adminpage", "0008_auto_20210924_1420"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='progresspointsfile',
-            name='season',
+            model_name="progresspointsfile",
+            name="season",
         ),
         migrations.RemoveField(
-            model_name='studygroupassign',
-            name='period',
+            model_name="studygroupassign",
+            name="period",
         ),
         migrations.AddField(
-            model_name='progresspointsfile',
-            name='period',
-            field=models.CharField(choices=[('1', '1차 진도율'), ('2', '2차 진도율'), ('3', '3차 진도율'), ('final', '최종 진도율'), ('completion', '종료 시점 진도율 (수료증)')], default=1, max_length=20),
+            model_name="progresspointsfile",
+            name="period",
+            field=models.CharField(
+                choices=[
+                    ("1", "1차 진도율"),
+                    ("2", "2차 진도율"),
+                    ("3", "3차 진도율"),
+                    ("final", "최종 진도율"),
+                    ("completion", "종료 시점 진도율 (수료증)"),
+                ],
+                default=1,
+                max_length=20,
+            ),
             preserve_default=False,
         ),
         migrations.AddField(
-            model_name='studygroupassign',
-            name='season',
+            model_name="studygroupassign",
+            name="season",
             field=models.IntegerField(default=7),
             preserve_default=False,
         ),

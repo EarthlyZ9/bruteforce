@@ -9,18 +9,24 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('activities', '0001_initial'),
+        ("activities", "0001_initial"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='htmlfruits',
-            name='voter',
-            field=models.ManyToManyField(related_name='voter_htmlfruits', to=settings.AUTH_USER_MODEL),
+            model_name="htmlfruits",
+            name="voter",
+            field=models.ManyToManyField(
+                related_name="voter_htmlfruits", to=settings.AUTH_USER_MODEL
+            ),
         ),
         migrations.AlterField(
-            model_name='htmlfruits',
-            name='author',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='author_htmlfruits', to=settings.AUTH_USER_MODEL),
+            model_name="htmlfruits",
+            name="author",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="author_htmlfruits",
+                to=settings.AUTH_USER_MODEL,
+            ),
         ),
     ]

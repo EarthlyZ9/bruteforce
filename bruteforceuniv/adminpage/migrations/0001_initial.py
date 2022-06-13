@@ -15,53 +15,134 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Progress',
+            name="Progress",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('progress1', models.IntegerField(blank=True, default=0, null=True)),
-                ('progress2', models.IntegerField(blank=True, default=0, null=True)),
-                ('progress3', models.IntegerField(blank=True, default=0, null=True)),
-                ('progress4', models.IntegerField(blank=True, default=0, null=True)),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("progress1", models.IntegerField(blank=True, default=0, null=True)),
+                ("progress2", models.IntegerField(blank=True, default=0, null=True)),
+                ("progress3", models.IntegerField(blank=True, default=0, null=True)),
+                ("progress4", models.IntegerField(blank=True, default=0, null=True)),
+                (
+                    "user",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='AdditionalPoints',
+            name="AdditionalPoints",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('additional_points', models.IntegerField(blank=True, default=0, null=True)),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "additional_points",
+                    models.IntegerField(blank=True, default=0, null=True),
+                ),
+                (
+                    "user",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='ActivityPoints',
+            name="ActivityPoints",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('attendance1', models.IntegerField(blank=True, default=0, null=True)),
-                ('weekly_studies1', models.IntegerField(blank=True, default=0, null=True)),
-                ('attendance2', models.IntegerField(blank=True, default=0, null=True)),
-                ('weekly_studies2', models.IntegerField(blank=True, default=0, null=True)),
-                ('attendance3', models.IntegerField(blank=True, default=0, null=True)),
-                ('weekly_studies3', models.IntegerField(blank=True, default=0, null=True)),
-                ('attendance4', models.IntegerField(blank=True, default=0, null=True)),
-                ('weekly_studies4', models.IntegerField(blank=True, default=0, null=True)),
-                ('attendance5', models.IntegerField(blank=True, default=0, null=True)),
-                ('weekly_studies5', models.IntegerField(blank=True, default=0, null=True)),
-                ('attendance6', models.IntegerField(blank=True, default=0, null=True)),
-                ('weekly_studies6', models.IntegerField(blank=True, default=0, null=True)),
-                ('attendance7', models.IntegerField(blank=True, default=0, null=True)),
-                ('weekly_studies7', models.IntegerField(blank=True, default=0, null=True)),
-                ('attendance8', models.IntegerField(blank=True, default=0, null=True)),
-                ('weekly_studies8', models.IntegerField(blank=True, default=0, null=True)),
-                ('attendance9', models.IntegerField(blank=True, default=0, null=True)),
-                ('weekly_studies9', models.IntegerField(blank=True, default=0, null=True)),
-                ('attendance10', models.IntegerField(blank=True, default=0, null=True)),
-                ('weekly_studies10', models.IntegerField(blank=True, default=0, null=True)),
-                ('attendance11', models.IntegerField(blank=True, default=0, null=True)),
-                ('weekly_studies11', models.IntegerField(blank=True, default=0, null=True)),
-                ('attendance12', models.IntegerField(blank=True, default=0, null=True)),
-                ('weekly_studies12', models.IntegerField(blank=True, default=0, null=True)),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("attendance1", models.IntegerField(blank=True, default=0, null=True)),
+                (
+                    "weekly_studies1",
+                    models.IntegerField(blank=True, default=0, null=True),
+                ),
+                ("attendance2", models.IntegerField(blank=True, default=0, null=True)),
+                (
+                    "weekly_studies2",
+                    models.IntegerField(blank=True, default=0, null=True),
+                ),
+                ("attendance3", models.IntegerField(blank=True, default=0, null=True)),
+                (
+                    "weekly_studies3",
+                    models.IntegerField(blank=True, default=0, null=True),
+                ),
+                ("attendance4", models.IntegerField(blank=True, default=0, null=True)),
+                (
+                    "weekly_studies4",
+                    models.IntegerField(blank=True, default=0, null=True),
+                ),
+                ("attendance5", models.IntegerField(blank=True, default=0, null=True)),
+                (
+                    "weekly_studies5",
+                    models.IntegerField(blank=True, default=0, null=True),
+                ),
+                ("attendance6", models.IntegerField(blank=True, default=0, null=True)),
+                (
+                    "weekly_studies6",
+                    models.IntegerField(blank=True, default=0, null=True),
+                ),
+                ("attendance7", models.IntegerField(blank=True, default=0, null=True)),
+                (
+                    "weekly_studies7",
+                    models.IntegerField(blank=True, default=0, null=True),
+                ),
+                ("attendance8", models.IntegerField(blank=True, default=0, null=True)),
+                (
+                    "weekly_studies8",
+                    models.IntegerField(blank=True, default=0, null=True),
+                ),
+                ("attendance9", models.IntegerField(blank=True, default=0, null=True)),
+                (
+                    "weekly_studies9",
+                    models.IntegerField(blank=True, default=0, null=True),
+                ),
+                ("attendance10", models.IntegerField(blank=True, default=0, null=True)),
+                (
+                    "weekly_studies10",
+                    models.IntegerField(blank=True, default=0, null=True),
+                ),
+                ("attendance11", models.IntegerField(blank=True, default=0, null=True)),
+                (
+                    "weekly_studies11",
+                    models.IntegerField(blank=True, default=0, null=True),
+                ),
+                ("attendance12", models.IntegerField(blank=True, default=0, null=True)),
+                (
+                    "weekly_studies12",
+                    models.IntegerField(blank=True, default=0, null=True),
+                ),
+                (
+                    "user",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
         ),
     ]
