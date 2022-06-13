@@ -1,9 +1,7 @@
 from django.db import models
 from accounts.models import Account_Info
 
-# from activities.models import Activities
 
-# Create your models here.
 class Points_purchase(models.Model):
     name = models.CharField(max_length=100)
     num = models.IntegerField(primary_key=True)
@@ -13,7 +11,7 @@ class Points_purchase(models.Model):
     # 가용 포인트
 
     def __str__(self):
-        return self.name
+        return str(self.name)
 
 
 class PurchaseRequest(models.Model):
