@@ -9,7 +9,7 @@ User=ubuntu
 Group=ubuntu
 WorkingDirectory=/home/ubuntu/bruteforce/bruteforceuniv
 EnvironmentFile=/home/ubuntu/bruteforce/.venv/bruteforce.env
-ExecStart=/home/ubuntu/.local/bin/gunicorn \
+ExecStart=/home/ubuntu/bruteforce/.venv/bin/gunicorn \
         --workers 2 \
         --bind unix:/run/gunicorn.sock \
         --access-logfile /var/log/gunicorn/access.log \
