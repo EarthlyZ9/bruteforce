@@ -17,7 +17,7 @@ import json
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
-with open(os.path.join(BASE_DIR, "../../../secret.json"), "rb") as secret_file:
+with open(os.path.join(BASE_DIR, "secret.json"), "rb") as secret_file:
     secrets = json.load(secret_file)
 
 # Quick-start development settings - unsuitable for production
@@ -76,7 +76,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "bruteforce.wsgi.application"
+WSGI_APPLICATION = "bruteforceuniv.wsgi.debug.application"
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases

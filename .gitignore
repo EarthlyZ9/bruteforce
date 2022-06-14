@@ -1,6 +1,6 @@
 .DS_Store
 *.pyc
-secret.json
+bruteforceuniv/secret.json
 .venv
 .idea
 .media

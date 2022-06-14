@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "bruteforce.settings.debug")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "bruteforceuniv.settings.debug")
 
 application = get_wsgi_application()

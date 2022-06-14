@@ -1,6 +1,6 @@
 import os
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "bruteforce.settings.deploy")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "bruteforceuniv.settings.deploy")
 
 application = get_wsgi_application()
