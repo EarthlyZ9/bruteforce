@@ -83,7 +83,7 @@ def check_login(request):
     if valid:
         login(request, user)
 
-    return JsonResponse({"result": valid})
+    return JsonResponse({'result': valid})
 
 
 def signup(request):
@@ -102,7 +102,7 @@ def username_availability(request):
     username = request.POST.get("username")
     exist = Account_Info.objects.filter(username=username).exists()
 
-    return JsonResponse({"result": exist})
+    return JsonResponse({'result': exist})
 
 
 @login_required(login_url="accounts:login")
