@@ -18,17 +18,17 @@ const loginInputUserID = document.getElementById("floatingUserID");
 const loginInputPassword = document.getElementById("floatingPassword");
 const loginButton = document.getElementById("login-btn");
 
-function onLoginBtnClick() {
-  const userID = loginInputUserID.value;
-  const userPassword = loginInputPassword.value;
-  if (!userID) {
-    alert("아이디를 입력해주세요!")
-  } else if (!userPassword) {
-    alert("비밀번호를 입력해주세요!")
-  }
-}
-
-loginButton.addEventListener("click", onLoginBtnClick);
+// function onLoginBtnClick() {
+//   const userID = loginInputUserID.value;
+//   const userPassword = loginInputPassword.value;
+//   if (!userID) {
+//     alert("아이디를 입력해주세요!")
+//   } else if (!userPassword) {
+//     alert("비밀번호를 입력해주세요!")
+//   }
+// }
+//
+// //loginButton.addEventListener("click", onLoginBtnClick);
 
 var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
 var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
@@ -41,6 +41,14 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 function checkLogin() {
   let username = loginInputUserID.value
   let password = loginInputPassword.value
+
+  if (!username) {
+    alert("아이디를 입력해주세요!")
+    return
+  } else if (!password) {
+    alert("비밀번호를 입력해주세요!")
+    return
+  }
 
   let formData = new FormData();
   formData.append('username', username)
