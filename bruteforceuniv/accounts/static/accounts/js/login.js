@@ -66,6 +66,7 @@ function checkLogin() {
   }
   xhttp.open("POST", "/mypage/check/login", true);
   xhttp.setRequestHeader('X-CSRFToken', getCookie('csrftoken'));
+  xhttp.setRequestHeader('Content-Type', 'application/json');
   xhttp.send(formData);
 
   }
