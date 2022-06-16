@@ -26,7 +26,10 @@ with open(os.path.join(BASE_DIR, "secret.json"), "rb") as secret_file:
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = secrets["SECRET_KEY"]
 
-ALLOWED_HOSTS = ["ap-northeast-2.compute.amazonaws.com", ".bruteforceuniv.com", "www.bruteforceuniv.com"]
+ALLOWED_HOSTS = ["ap-northeast-2.compute.amazonaws.com",
+                 ".bruteforceuniv.com",
+                 "www.bruteforceuniv.com",
+                 ".ap-northeast-2.elb.amazonaws.com"]
 DEBUG = True
 
 # Application definition
