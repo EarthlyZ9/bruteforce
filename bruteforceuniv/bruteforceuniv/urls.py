@@ -17,7 +17,6 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from django.conf.urls import handler404
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -29,7 +28,7 @@ urlpatterns = [
     ),
     path("points/", include(("points.urls", "points"), namespace="points")),
     path(
-        "bf_admin/", include(("adminpage.urls", "admin-page"), namespace="admin-page")
+        "bf_admin/", include(("adminpage.urls", "adminpage"), namespace="admin-page")
     ),
     path(
         "discussions/",
@@ -37,6 +36,15 @@ urlpatterns = [
     ),
 ]
 
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
 handler404 = "main.views.custom_404"
+
+
+def trigger_error(request):
+    division_by_zero = 1 / 0
+
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += [
+    path('sentry-debug/', trigger_error),
+]
+

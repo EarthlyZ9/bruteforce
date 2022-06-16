@@ -45,4 +45,5 @@ def kakao_plus(request):
 
 def custom_404(request, exception=None):
     response = render(request, "main/custom404.html", status=404)
+    response.status_code = 404
     return response
