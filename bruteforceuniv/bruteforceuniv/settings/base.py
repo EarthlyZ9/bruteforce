@@ -46,7 +46,6 @@ INSTALLED_APPS = [
     "discussions",
     "django_extensions",
     "storages",
-    "sentry_sdk",
 ]
 
 MIDDLEWARE = [
