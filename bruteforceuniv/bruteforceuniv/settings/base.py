@@ -171,3 +171,6 @@ AWS_DEFAULT_ACL = None
 AWS_S3_VERIFY = True
 
 DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
+
+# CSRF
+CSRF_TRUSTED_ORIGINS = ['https://www.bruteforceuniv.com', 'https://bruteforceuniv.com']
