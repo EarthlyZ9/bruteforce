@@ -29,8 +29,7 @@ SECRET_KEY = secrets["SECRET_KEY"]
 ALLOWED_HOSTS = ["ap-northeast-2.compute.amazonaws.com",
                  ".bruteforceuniv.com",
                  "www.bruteforceuniv.com",
-                 ".ap-northeast-2.elb.amazonaws.com",
-                 "172.31.6.222"]
+                 ".ap-northeast-2.elb.amazonaws.com"]
 DEBUG = True
 
 # Application definition
