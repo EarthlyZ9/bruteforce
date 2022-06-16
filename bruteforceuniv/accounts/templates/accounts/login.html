@@ -15,7 +15,7 @@
         <div class="login-container container">
           <div class="input-container">
             <h2>로그인</h2>
-            <form method="post"class="post-form" action="{% url 'accounts:login' %}">
+            <form method="post" class="post-form" action="{% url 'accounts:login' %}" id="login_form">
               {% csrf_token %}
               <!-- <input type="hidden" name="next" value="">  <!-- 로그인 성공후 이동되는 URL -->
               <h6>아이디</h6>

@@ -75,15 +75,19 @@ def update_user_info(request):
 
 
 def check_login(request):
+    print(request.POST)
     username = request.POST.get("username")
     password = request.POST.get("password")
+    print(username, password)
 
     user = authenticate(username=username, password=password)
+    print(user)
     valid = user is not None
+    print(valid)
     if valid:
         login(request, user)
 
-    return JsonResponse({"result": valid})
+    return JsonResponse({"username": username, "password": password, "result": valid})
 
 
 def signup(request):

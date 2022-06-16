@@ -41,6 +41,8 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 function checkLogin() {
   let username = loginInputUserID.value
   let password = loginInputPassword.value
+  console.log(typeof username)
+  console.log(username, password)
 
   if (!username) {
     alert("아이디를 입력해주세요!")
@@ -53,10 +55,15 @@ function checkLogin() {
   let formData = new FormData();
   formData.append('username', username)
   formData.append('password', password)
+  console.log(formData.get('username'));
+  console.log(formData.get('password'));
+  console.log(...formData);
 
   const xhttp = new XMLHttpRequest();
   xhttp.onload = function() {
-    let result = JSON.parse(this.responseText)
+    console.log("response", this.responseText);
+    let result = JSON.parse(this.responseText);
+    console.log("result", result);
     if(result.result) {
       window.location.href = "/"
       alert('로그인 되었습니다.')
@@ -66,7 +73,6 @@ function checkLogin() {
   }
   xhttp.open("POST", "/mypage/check/login", true);
   xhttp.setRequestHeader('X-CSRFToken', getCookie('csrftoken'));
-  xhttp.setRequestHeader('Content-Type', 'application/json');
   xhttp.send(formData);
 
   }
