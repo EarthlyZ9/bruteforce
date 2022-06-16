@@ -6,7 +6,8 @@ DEBUG = False
 ALLOWED_HOSTS = [".ap-northeast-2.compute.amazonaws.com",
                  ".bruteforceuniv.com",
                  'www.bruteforceuniv.com',
-                 '.ap-northeast-2.elb.amazonaws.com']
+                 '.ap-northeast-2.elb.amazonaws.com',
+                 "172.31.6.222"]
 STATIC_ROOT = BASE_DIR / 'static/'
 STATICFILES_DIRS = []
 
