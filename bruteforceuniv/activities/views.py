@@ -227,7 +227,6 @@ def weekly_studies(request):
     user = request.user
     post_data = request.POST
     date_now = timezone.now()
-    print(date_now)
     week = Week.objects.filter(
         season=user.season, start_date__lte=date_now, end_date__gte=date_now
     ).first()

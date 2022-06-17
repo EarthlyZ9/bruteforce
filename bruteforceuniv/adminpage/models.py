@@ -42,7 +42,7 @@ class PointsStatus(models.Model):
 
 
 def make_file_path_groupinfo(instance, filename):
-    path = "study_group/{filename}".format(
+    path = "media/study_group/{filename}".format(
         filename=filename,
     )
     return path
@@ -54,7 +54,7 @@ class StudyGroupAssign(models.Model):
 
 
 def make_file_path_progress(instance, filename):
-    path = "progress_studies/{season}/{filename}".format(
+    path = "media/progress_studies/{season}/{filename}".format(
         season=instance.season,
         filename=filename,
     )

@@ -147,7 +147,7 @@ AUTH_USER_MODEL = "accounts.Account_Info"
 # MEDIA
 
 MEDIA_URL = "/media/"
-MEDIA_ROOT = os.path.join(BASE_DIR, "", "../../../media")
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DATE_FORMAT = "Y M d"
 
@@ -161,15 +161,13 @@ EMAIL_HOST_USER = secrets["EMAIL_HOST_USER"]
 EMAIL_HOST_PASSWORD = secrets["EMAIL_HOST_PASSWORD"]
 
 # AWS settings
-AWS_ACCESS_KEY_ID = ["AWS_SECRET_ACCESS_KEY"]
+AWS_ACCESS_KEY_ID = secrets["AWS_ACCESS_KEY_ID"]
 AWS_SECRET_ACCESS_KEY = secrets["AWS_SECRET_ACCESS_KEY"]
-AWS_STORAGE_BUCKET_NAME = "bruteforce"
-AWS_S3_SIGNATURE_VERSION = 's3v4'
+AWS_STORAGE_BUCKET_NAME = "bruteforceuniv"
 AWS_S3_REGION_NAME = "ap-northeast-2"
 AWS_S3_FILE_OVERWRITE = False
 AWS_DEFAULT_ACL = None
 AWS_S3_VERIFY = True
-
 DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
 
 # CSRF

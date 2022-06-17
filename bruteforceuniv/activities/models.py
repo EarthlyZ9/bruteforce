@@ -29,7 +29,7 @@ class Material(models.Model):
 
 
 def make_file_path(instance, filename):
-    path = "weekly_studies/{season}/{username}/{filename}".format(
+    path = "media/weekly_studies/{season}/{username}/{filename}".format(
         season=instance.week.season,
         username=instance.user.name,
         filename=filename,
@@ -40,7 +40,7 @@ def make_file_path(instance, filename):
 class WeeklyStudies(models.Model):
     user = models.ForeignKey(Account_Info, on_delete=models.CASCADE)
     week = models.ForeignKey("Week", on_delete=models.CASCADE)
-    attendance = models.TextField(null=True, blank=True)
+    attendance = models.CharField(null=True, blank=True, max_length=2000)
     file = models.FileField(upload_to=make_file_path, null=True, blank=True)
     url = models.URLField(max_length=300, null=True, blank=True)
     submit_date = models.DateTimeField(auto_now_add=True)
