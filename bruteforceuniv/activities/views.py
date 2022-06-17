@@ -249,7 +249,7 @@ def weekly_studies(request):
             return redirect("activities:weekly-studies")
         else:
             print(form.errors)
-            HttpResponse("Something went wrong.")
+            return HttpResponse("Something went wrong.")
 
     else:
         return render(
