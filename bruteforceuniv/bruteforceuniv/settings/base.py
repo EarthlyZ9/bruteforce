@@ -84,16 +84,7 @@ WSGI_APPLICATION = "bruteforceuniv.wsgi.debug.application"
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.mysql",
-        "HOST": "localhost",
-        "PORT": "3306",
-        "NAME": "bruteforce",
-        "USER": "root",
-        "PASSWORD": "linda2927",
-    },
-}
+DATABASES = secrets["DATABASES"]
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
