@@ -1,3 +1,5 @@
+from django.views.decorators.csrf import csrf_protect
+
 from points.models import PurchaseRequest
 from django.template.loader import render_to_string
 from django.contrib.auth import authenticate, login
@@ -90,6 +92,7 @@ def check_login(request):
     return JsonResponse({"username": username, "password": password, "result": valid})
 
 
+@csrf_protect
 def signup(request):
     if request.method == "POST":
         form = UserForm(request.POST)
